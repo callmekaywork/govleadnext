@@ -20,12 +20,12 @@ export default function Home() {
       <br />
       <What />
       <br />
-      <Rowsection />
+      {/* <Rowsection />
       <Middle />
       <br />
       <Whocanapply />
       <Image_1 />
-      <Proposition />
+      <Proposition /> */}
       {/* <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-20 gap-16 sm:p-20">
         <main className="flex flex-col gap-[12px] row-start-2 items-center sm:items-start"></main>
       </div> */}

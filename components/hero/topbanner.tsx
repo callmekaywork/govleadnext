@@ -27,7 +27,6 @@ export default function Topbanner() {
 
           {/* Background image */}
           <div className="flex justify-center items-center bg-gray-200 h-[500px] w-[100%] mt-4 rounded-2xl overflow-hidden">
-            {/* <div>Image placeholder</div> */}
             <Image
               className="w-full h-full object-cover "
               src="/Hero_1.jpg"
@@ -66,12 +65,6 @@ export default function Topbanner() {
                   </Button>
                 </Link>
               </span>
-              {/* <div className="flex flex-row h-auto p-4 w-full justify-center gap-2 mt-4">
-                <span className="h-[10px] w-[10px] rounded-full bg-green-400"></span>
-                <span className="h-[10px] w-[10px] rounded-full bg-white"></span>
-                <span className="h-[10px] w-[10px] rounded-full bg-white"></span>
-                <span className="h-[10px] w-[10px] rounded-full bg-white"></span>
-              </div> */}
             </div>
           </div>
         </div>
@@ -84,21 +77,21 @@ export default function Topbanner() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="hidden md:block bg-[#f0f0f0] w-full pb-4"
+        className="hidden md:block bg-[#f0f0f0] w-full pb-8"
       >
         <div className="flex flex-row-reverse items-center justify-center ">
           <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] mt-4 rounded-2xl overflow-hidden">
             {/* <div>Image placeholder</div> */}
             <Image
               className="w-full h-full object-cover "
-              src="/Hero_1.jpg"
+              src="/img_2.jpeg"
               alt="Hero Image optimized"
               width={2975}
               height={1960}
             />
           </div>
           <div className="p-2 mr-2">
-            <h1 className="h-[100px] flex items-center text-4xl font-bold">
+            <h1 className="h-[100px] flex items-center text-5xl font-bold">
               Welcome
             </h1>
 
@@ -106,17 +99,18 @@ export default function Topbanner() {
               <span className="font-extrabold text-2xl">
                 IncuVera Entrepreneur Incubation Program
               </span>{' '}
-              <span className="font-light">
+              <span className="font-light text-[13px] p-1 bg-[#38383b] text-white">
                 Empowering Entrepreneurs, Creating Jobs”
               </span>
             </h1>
-            <p className="w-[300px]">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              fugit ab nesciunt eveniet assumenda sunt totam sed recusandae
-              voluptate veritatis? Voluptate!
+            <p className="w-[300px] text-[15px]">
+              Structured Business Incubation A comprehensive six-month
+              incubation programme designed to support early-stage and growing
+              businesses with the tools, systems, and strategies required to
+              scale sustainably.
             </p>
             <div>
-              <Button className="h-[50px] w-[160px] mt-2 rounded-none bg-[#303030] text-white flex justify-center">
+              <Button className="h-[50px] w-[160px] mt-2 rounded-none bg-[#303030] text-white flex justify-center hover:cursor-pointer hover:bg-[#292833]">
                 Apply Now
               </Button>
             </div>

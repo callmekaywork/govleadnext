@@ -59,7 +59,7 @@ export const Header = () => {
        * About
        */}
 
-      <div className="flex flex-row-reverse w-full justify-between">
+      <div className="hidden md:flex flex-row-reverse w-full md:w-[80%] lg:w-[70%] justify-between">
         {/** Small menu Navigation */}
         <div className="bg-none h-[70px] w-[70px] flex items-center justify-center mx-[25px] md:hidden">
           <Sheet>
@@ -69,7 +69,6 @@ export const Header = () => {
             <SheetContent>
               <SheetHeader>
                 <SheetTitle>side menu</SheetTitle>
-                {/* <SheetDescription>side menu</SheetDescription> */}
               </SheetHeader>
               <div className="grid flex-1 auto-rows-min gap-6 px-4">
                 <div className="side-menu-class flex flex-row items-center justify-around">
@@ -115,9 +114,7 @@ export const Header = () => {
 
                 <div className="side-menu-class grid gap-3">
                   <Label htmlFor="sheet-demo-name">About Us</Label>
-                  {/* <div>
-                  <Signin />
-                </div> */}
+
                   <div className="flex flex-row items-center justify-end">
                     <FaWhatsappSquare color="#25D366" />
                     <FaFacebookSquare color="#4267B2" />
@@ -144,7 +141,7 @@ export const Header = () => {
             </div>
           </span> */}
 
-          <NavigationMenu viewport={false}>
+          {/* <NavigationMenu viewport={false}>
             <NavigationMenuList>
               <NavigationMenuItem className="bg-[#e6e6e6] text-[13px] font-semibold flex justify-center items-center h-[40px] w-auto px-4 rounded-none menu-item-cur">
                 Entrepreneurs
@@ -211,7 +208,7 @@ export const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
-          </NavigationMenu>
+          </NavigationMenu> */}
         </div>
 
         {/** Logo on header */}
@@ -225,6 +222,23 @@ export const Header = () => {
             />
           </Link>
         </div>
+      </div>
+      <div className="w-full h-7 bg-amber-300 flex flex-row justify-center items-center gap-10 text-[12px]">
+        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+          Investors
+        </p>
+        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+          Mentors
+        </p>
+        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+          Resources
+        </p>
+        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+          Services
+        </p>
+        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+          About
+        </p>
       </div>
     </div>
   );
