@@ -43,10 +43,10 @@ export default function Middle() {
 
         <div className="absolute bottom-[0px] left-[10px] my-4 p-4 w-[330px] sm:w-[360px] bg-rgba(64.6% 0.222 41.116) text-white rounded-2xl ">
           <span className="font-light italic">
-            "Empowering aspiring entrepreneurs across
+            Empowering aspiring entrepreneurs across
             <span className="font-bold">South Africa </span>
             with training, mentorship, and funding to launch
-            <span className="font-bold">sustainable businesses</span>".
+            <span className="font-bold">sustainable businesses</span>
           </span>
         </div>
 
