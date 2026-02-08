@@ -1,4 +1,4 @@
-import { signIn } from '@/auth';
+// import { signIn } from '@/auth';
 import { Button } from '../ui/button';
 
 import { FcGoogle } from 'react-icons/fc';
@@ -8,10 +8,13 @@ export default function SignIn() {
     <form
       action={async () => {
         'use server';
-        await signIn('google');
+        // await signIn('google');
       }}
     >
-      <Button className="cursor-pointer h-2x p-2 m-2 rounded-none" type="submit">
+      <Button
+        className="cursor-pointer h-2x p-2 m-2 rounded-none"
+        type="submit"
+      >
         Google
         <FcGoogle />
       </Button>
