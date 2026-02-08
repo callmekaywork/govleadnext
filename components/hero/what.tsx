@@ -1,9 +1,5 @@
-import { span } from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { buttonVariants } from '../ui/button';
-
-const blocks = ['1', '2', '3', '4'];
 
 export default function What() {
   return (

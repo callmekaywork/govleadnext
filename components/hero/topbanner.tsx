@@ -1,6 +1,5 @@
 import { Button } from '../ui/button';
-import { Separator } from '../ui/separator';
-import { FaAsterisk } from 'react-icons/fa';
+
 import { HiAcademicCap } from 'react-icons/hi';
 
 import Image from 'next/image';

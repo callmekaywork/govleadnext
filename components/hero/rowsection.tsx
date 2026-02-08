@@ -1,8 +1,3 @@
-import { FaAsterisk } from 'react-icons/fa';
-import { HiAcademicCap } from 'react-icons/hi';
-import { DiEnvato } from 'react-icons/di';
-import { DiGoogleAnalytics } from 'react-icons/di';
-
 export default function Rowpage() {
   const items = ['Slide 1', 'Slide 2', 'Slide 3', 'Slide 4'];
 

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Separator } from '../ui/separator';
 
 export default function Footer() {
   return (
@@ -23,7 +22,9 @@ export default function Footer() {
               />
             </div>
 
-            <p className="w-full text-center text-[10px] mt-2">© 2024 GovLead Group</p>
+            <p className="w-full text-center text-[10px] mt-2">
+              © 2024 GovLead Group
+            </p>
           </div>
         </section>
       </footer>

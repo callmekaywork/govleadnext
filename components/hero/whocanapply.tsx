@@ -1,5 +1,3 @@
-import { Separator } from '@/components/ui/separator';
-
 import * as motion from 'motion/react-client';
 
 export default function Whocanapply() {

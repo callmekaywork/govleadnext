@@ -1,5 +1,3 @@
-import { Separator } from '@/components/ui/separator';
-import Image from 'next/image';
 import * as motion from 'motion/react-client';
 
 import React from 'react';
@@ -29,7 +27,10 @@ export default function Proposition() {
 
         <div className="h-auto w-[95%] mx-[2.5%] flex flex-col gap-2 justify-start">
           {benefits.map((item, index) => (
-            <span key={index} className="flex flex-row justify-left items-center gap-2">
+            <span
+              key={index}
+              className="flex flex-row justify-left items-center gap-2"
+            >
               <span className="h-[80px] w-[80px] rounded-2xl bg-[#c7c7c7]"></span>
               <span className="w-[200px]">{item}</span>
             </span>

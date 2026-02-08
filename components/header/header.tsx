@@ -1,7 +1,5 @@
 /**Mobile first approach */
 
-import Signin from './signin';
-
 /** icons */
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
@@ -9,29 +7,27 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { FaTwitterSquare } from 'react-icons/fa';
 import { FaInstagramSquare } from 'react-icons/fa';
 import { FaWhatsappSquare } from 'react-icons/fa';
-import { FaChevronDown } from 'react-icons/fa6';
 
 /** Sheet menu  */
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 
 /** Navigation Menu */
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from '@/components/ui/navigation-menu';
+// import {
+//   NavigationMenu,
+//   NavigationMenuContent,
+//   NavigationMenuIndicator,
+//   NavigationMenuItem,
+//   NavigationMenuLink,
+//   NavigationMenuList,
+//   NavigationMenuTrigger,
+//   NavigationMenuViewport,
+// } from '@/components/ui/navigation-menu';
 
 /** components  */
 import { Separator } from '@/components/ui/separator';
