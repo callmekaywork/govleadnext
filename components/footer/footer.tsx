@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
 
             <p className="w-full text-center text-[10px] mt-2">
-              © 2024 GovLead Group
+              © 2026 IncuVera pty
             </p>
           </div>
         </section>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function What() {
   return (
     <div className="flex justify-center items-center h-auto w-full">
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <div className="w-full bg-[#1d1d1d] h-[500px] pb-5">
           <div>
             <h1 className="text-5xl h-[100px] text-[#e9e9e9] px-4 flex justify-start items-center">
@@ -23,7 +23,7 @@ export default function What() {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <div className="grid grid-cols-5 grid-rows-4 gap-4">
           {blocks.map((index, key) => (
@@ -35,15 +35,15 @@ export default function What() {
             </span>
           ))}
         </div> */}
-      <div className="hidden md:block">
-        <div>
+      <div className="md:block">
+        {/* <div>
           <h1 className="h-[70px] my-2 w-full flex justify-start items-center font-semibold text-4xl p-2 bg-[#dadada]">
             Who are we?
           </h1>
-        </div>
-        <div className=" md:flex md:flex-row md:justify-center w-full h-[400px]">
+        </div> */}
+        <div className="flex flex-col md:flex md:flex-row md:justify-center w-full md:h-[400px]">
           <div className="flex justify-center items-center mx-2">
-            <div className="h-[300px] w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
+            <div className="h-[300px] w-full mb-2 md:w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
               <Image
                 width={980}
                 height={980}

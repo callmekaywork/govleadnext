@@ -41,9 +41,9 @@ export const Header = () => {
   return (
     <div className="fixed z-10 w-full h-[120px] flex flex-col items-center bg-white">
       <div className="flex flex-row justify-center items-center text-[10px] h-[40px] bg-green-600 w-full text-white">
-        <span className="mx-2">reach GovLead Management Here: </span>
-        <Link href={'govern@govlead.co.za'} className="text-white">
-          govern@govlead.co.za
+        <span className="mx-2">reach IncuVera Management Here: </span>
+        <Link href={'pearltyobela@gmail.com'} className="text-white">
+          pearltyobela@gmail.com
         </Link>
       </div>
 
@@ -55,7 +55,7 @@ export const Header = () => {
        * About
        */}
 
-      <div className="hidden md:flex flex-row-reverse w-full md:w-[80%] lg:w-[70%] justify-between">
+      <div className="flex flex-row-reverse w-full md:w-[80%] lg:w-[70%] justify-between">
         {/** Small menu Navigation */}
         <div className="bg-none h-[70px] w-[70px] flex items-center justify-center mx-[25px] md:hidden">
           <Sheet>
@@ -219,7 +219,7 @@ export const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full h-7 bg-amber-300 flex flex-row justify-center items-center gap-10 text-[12px]">
+      <div className="hidden  w-full h-7 bg-amber-300 md:flex flex-row justify-center items-center gap-4 text-[12px]">
         <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
           Investors
         </p>

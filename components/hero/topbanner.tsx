@@ -28,7 +28,7 @@ export default function Topbanner() {
           <div className="flex justify-center items-center bg-gray-200 h-[500px] w-[100%] mt-4 rounded-2xl overflow-hidden">
             <Image
               className="w-full h-full object-cover "
-              src="/Hero_1.jpg"
+              src="/img_2.jpeg"
               alt="Hero Image optimized"
               width={2975}
               height={1960}
@@ -43,11 +43,9 @@ export default function Topbanner() {
 
           <div className="absolute h-auto w-[100%] bg-gradient-to-t from-[rgba(0,0,0,0.85)] to-transparent rounded-2xl">
             <h1 className="mt-3 px-4 text-white flex flex-col">
-              <span className="font-extrabold text-2xl">
-                IncuVera Entrepreneur Incubation Program
-              </span>{' '}
+              <span className="font-extrabold text-2xl">IncuVera</span>
               <span className="font-light">
-                Empowering Entrepreneurs, Creating Jobs”
+                Nurturing Innovation Empowering Growth
               </span>
             </h1>
 
@@ -95,11 +93,9 @@ export default function Topbanner() {
             </h1>
 
             <h1 className="my-1  text-black flex flex-col w-[300px]">
-              <span className="font-extrabold text-2xl">
-                IncuVera Entrepreneur Incubation Program
-              </span>{' '}
+              <span className="font-extrabold text-5xl">IncuVera</span>
               <span className="font-light text-[13px] p-1 bg-[#38383b] text-white">
-                Empowering Entrepreneurs, Creating Jobs”
+                Nurturing Innovation Empowering Growth
               </span>
             </h1>
             <p className="w-[300px] text-[15px]">
