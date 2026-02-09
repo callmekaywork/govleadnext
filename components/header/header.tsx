@@ -47,9 +47,11 @@ export const Header = () => {
         </Link>
       </div>
 
-      {/** Entrepreneurs
+      {/**
+       * Entrepreneurs
        * Investors
        * Mentors
+       *
        * Resources
        * Services
        * About
