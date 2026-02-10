@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function What() {
+export default function WhatisIncuvera() {
   return (
-    <div className="flex justify-center items-center h-auto w-full">
+    <div className="flex justify-center items-center h-2/3 w-full">
       {/* <div className="md:hidden">
         <div className="w-full bg-[#1d1d1d] h-[500px] pb-5">
           <div>
@@ -35,15 +35,15 @@ export default function What() {
             </span>
           ))}
         </div> */}
-      <div className="md:block">
-        {/* <div>
-          <h1 className="h-[70px] my-2 w-full flex justify-start items-center font-semibold text-4xl p-2 bg-[#dadada]">
-            Who are we?
+      <div className="md:block w-3/4">
+        <div className="h-30 bg-[#ee5050] flex justify-start items-center mb-2">
+          <h1 className=" w-full  font-semibold text-6xl p-2 ">
+            What is IncuVera
           </h1>
-        </div> */}
-        <div className="flex flex-col md:flex md:flex-row md:justify-center w-full md:h-[400px]">
+        </div>
+        <div className="flex flex-col bg-[#30c078] md:flex md:flex-row md:justify-center w-full md:h-[400px] items-center">
           <div className="flex justify-center items-center mx-2">
-            <div className="h-[300px] w-full mb-2 md:w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
+            <div className="h-[300px] w-full mb-2 md:mb-0 md:w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
               <Image
                 width={980}
                 height={980}
@@ -54,11 +54,8 @@ export default function What() {
             </div>
           </div>
 
-          <div className="p-5 bg-[#373738] h-auto md:w-[400px] flex flex-col gap-5">
-            <h1 className="h-[50px] w-full flex justify-start items-center font-semibold text-2xl p-2 bg-[#dadada]">
-              What is IncuVera
-            </h1>
-            <div className="text-white flex flex-col gap-6">
+          <div className="p-5 bg-[#373738] h-[300px] md:w-[400px] flex flex-col gap-5">
+            <div className="text-white flex flex-col gap-2">
               <span>
                 IncuVera is a business incubation and enterprise development
                 firm focused on helping entrepreneurs build, grow, and scale
@@ -69,9 +66,6 @@ export default function What() {
                 strategic mentorship and professional consultancy designed to
                 strengthen business foundations and drive measurable growth.
               </span>
-            </div>
-
-            <div>
               <Link className={`text-2xl text-green-300`} href={'/about'}>
                 more...
               </Link>

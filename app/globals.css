@@ -121,6 +121,10 @@
   }
 }
 
+.hovertab {
+  box-shadow: 20px black;
+}
+
 .side-menu-class {
   height: auto;
   padding-top: 2.5px;

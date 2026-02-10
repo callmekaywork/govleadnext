@@ -9,7 +9,7 @@ import * as motion from 'motion/react-client';
 
 export default function Topbanner() {
   return (
-    <div>
+    <div className="h-2/3">
       <div className="h-[120px] w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
@@ -74,7 +74,7 @@ export default function Topbanner() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="hidden md:block bg-[#f0f0f0] w-full pb-8"
+        className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-full"
       >
         <div className="flex flex-row-reverse items-center justify-center ">
           <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] mt-4 rounded-2xl overflow-hidden">

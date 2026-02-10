@@ -3,13 +3,14 @@ export default function Rowpage() {
 
   return (
     <div className="relative bg-[#e7e7e7] h-auto ">
-      {/* <div className="w-full font-semibold h-[70px] flex justify-center items-center">
+      <div className="w-full font-semibold h-[70px] flex justify-center items-center">
         <h1 className="text-black text-[30px]">what to Expect?</h1>
       </div>
-      <div className="md:hidden w-[100%]  h-[160px] flex items-center justify-center gap-4">
+
+      <div className="w-[100%]  h-[160px] flex items-center justify-center gap-4">
         <div className="relative h-[100px] w-[100px] flex flex-col justify-center items-center gap-2 ">
           <span className="bg-[#2e2e2e] h-[89px] w-[90px] rounded-2xl flex justify-center items-center">
-            <HiAcademicCap size={40} fill="white" />
+            {/* <HiAcademicCap size={40} fill="white" /> */}
           </span>
           <span className="absolute bottom-[-10px] w-[100px] py-2 px-4 flex justify-center items-center text-[10px] text-white bg-blue-500 rounded-2xl">
             Training
@@ -18,7 +19,7 @@ export default function Rowpage() {
 
         <div className="relative h-[100px] w-[100px] flex flex-col justify-center items-center gap-2 ">
           <span className="bg-[#2e2e2e] h-[89px] w-[90px] rounded-2xl flex justify-center items-center">
-            <DiEnvato size={40} fill="white" />
+            {/* <DiEnvato size={40} fill="white" /> */}
           </span>
           <span className="absolute bottom-[-10px] w-[100px] py-2 px-4 flex justify-center items-center text-[10px] text-white bg-blue-400 rounded-2xl">
             Mentorship
@@ -26,14 +27,14 @@ export default function Rowpage() {
         </div>
         <div className="relative h-[100px] w-[100px] flex flex-col justify-center items-center gap-2 ">
           <span className="bg-[#2e2e2e] h-[89px] w-[90px] rounded-2xl flex justify-center items-center">
-            <DiGoogleAnalytics size={40} fill="white" />
+            {/* <DiGoogleAnalytics size={40} fill="white" /> */}
           </span>
           <span className="absolute bottom-[-10px] w-[100px] py-2 px-4  flex justify-center items-center text-[10px] text-white bg-blue-500 rounded-2xl">
             Seed Funding
           </span>
         </div>
-      </div> */}
-      <div className="md:hidden w-[95%] mx-[2.5%] overflow-x-scroll no-scrollbar flex items-center justify-center gap-4">
+      </div>
+      <div className=" w-[95%] mx-[2.5%] overflow-x-scroll no-scrollbar flex items-center justify-center gap-4">
         <div className="overflow-x-scroll no-scrollbar whitespace-nowrap">
           {items.map((item, index) => (
             <div

@@ -8,6 +8,7 @@ export default function Footer() {
         <p>0712198630</p> */}
 
         {/* <Separator color="white" /> */}
+        <section className="min-h-100 bg-[#2e2e2e] w-full"></section>
 
         <section>
           {/** Lower Footer section */}

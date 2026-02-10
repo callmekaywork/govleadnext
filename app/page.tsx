@@ -9,7 +9,11 @@ import Topbanner from '@/components/hero/topbanner';
 // import Image_1 from '@/components/hero/image_1';
 // import Proposition from '@/components/hero/proposition';
 
-import What from '@/components/hero/what';
+import What from '@/components/hero/whatisincuvera';
+import Rowsection from '@/components/hero/rowsection';
+import Packages from '@/components/hero/packages';
+import Whatisincuvera from '@/components/hero/whatisincuvera';
+import Bottomtab from '@/components/hero/bottomtab';
 
 export default function Home() {
   return (
@@ -18,10 +22,11 @@ export default function Home() {
 
       <Topbanner />
       <br />
-      <What />
+      <Whatisincuvera />
       <br />
-      {/* <Rowsection />
-      <Middle />
+      <Packages />
+      <Bottomtab />
+      {/*<Middle />
       <br />
       <Whocanapply />
       <Image_1 />
