@@ -7,9 +7,9 @@ import Link from 'next/link';
 
 import * as motion from 'motion/react-client';
 
-export default function Topbanner() {
+export default function Welcomescreen() {
   return (
-    <div className="md:h-2/3 h-auto">
+    <div className="md:h-2/3 h-auto md:mb-10">
       <div className="h-[120px] w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
@@ -21,11 +21,11 @@ export default function Topbanner() {
         }}
         className="md:hidden  bg-[#f0f0f0] w-full pb-4"
       >
-        <div className="flex flex-col-reverse h-auto w-[95%] mx-[2.5%] relative">
+        <div className="flex flex-col-reverse h-auto w-[100%] relative">
           {/* <Separator className="mt-3" /> */}
 
           {/* Background image */}
-          <div className="flex justify-center items-center bg-gray-200 h-[500px] w-[100%] mt-4 rounded-2xl overflow-hidden">
+          <div className="flex justify-center items-center  h-[500px] w-[100%] mt-4 overflow-hidden">
             <Image
               className="w-full h-full object-cover "
               src="/img_2.jpeg"
@@ -35,9 +35,9 @@ export default function Topbanner() {
             />
           </div>
 
-          <div className="absolute top-[10px] right-3 flex justify-center items-center h-[50px] w-[50px] bg-orange-400 rounded-full">
+          {/* <div className="absolute top-[10px] right-3 flex justify-center items-center h-[50px] w-[50px] bg-orange-400 rounded-full">
             <HiAcademicCap size={40} fill="white" />
-          </div>
+          </div> */}
 
           {/** Absolute Text on top of Image */}
 
@@ -77,7 +77,7 @@ export default function Topbanner() {
         className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-full"
       >
         <div className="flex flex-row-reverse items-center justify-center ">
-          <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] mt-4 rounded-2xl overflow-hidden">
+          <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] lg:w-130 lg:h-140 mt-4 rounded-2xl overflow-hidden">
             {/* <div>Image placeholder</div> */}
             <Image
               className="w-full h-full object-cover "
@@ -87,8 +87,8 @@ export default function Topbanner() {
               height={1960}
             />
           </div>
-          <div className="p-2 mr-2">
-            <h1 className="h-[100px] flex items-center text-5xl font-bold">
+          <div className="p-2 mr-2 lg:h-140">
+            <h1 className="h-[100px] flex items-center text-5xl md:text-7xl md:mr-10 font-bold">
               Welcome
             </h1>
 

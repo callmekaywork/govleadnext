@@ -1,7 +1,7 @@
 import { Header } from '@/components/header/header';
 
 import Footer from '@/components/footer/footer';
-import Topbanner from '@/components/hero/topbanner';
+import Topbanner from '@/components/hero/welcomescreen';
 
 // import Middle from '@/components/hero/middle';
 // import Whocanapply from '@/components/hero/whocanapply';
@@ -13,14 +13,15 @@ import What from '@/components/hero/whatisincuvera';
 import Rowsection from '@/components/hero/rowsection';
 import Packages from '@/components/hero/packages';
 import Whatisincuvera from '@/components/hero/whatisincuvera';
-import Aboutustab from '@/components/hero/bottomtab';
+import Aboutustab from '@/components/hero/aboutustab';
+import Welcomescreen from '@/components/hero/welcomescreen';
 
 export default function Home() {
   return (
     <div className="h-screen relative">
       <Header />
 
-      <Topbanner />
+      <Welcomescreen />
       <br />
       <Whatisincuvera />
       <br />
