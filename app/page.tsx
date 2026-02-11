@@ -22,7 +22,6 @@ export default function Home() {
       <Header />
 
       <Welcomescreen />
-      <br />
       <Whatisincuvera />
       <br />
       <Packages />

@@ -1,16 +1,28 @@
-import { Button } from '../ui/button';
+'use client';
 
-import { HiAcademicCap } from 'react-icons/hi';
+import { Button } from '../ui/button';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import * as motion from 'motion/react-client';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Welcomescreen() {
+  const [numService, setNumService] = useState(1);
+
+  const Services = [
+    'Business Audit',
+    'Strategic Planning',
+    'Asset Building (Brand & Digital Assets)',
+    'Training & Coaching',
+    'Monitoring & Performance Support',
+  ];
+
   return (
-    <div className="md:h-2/3 h-auto md:mb-10">
-      <div className="h-[120px] w-full"></div>
+    <div className="md:h-auto md:mb-10 flex flex-col md:gap-10 bg-[#f0f0f0]">
+      <div className="h-20 md:h-30 w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
         whileInView={{ scale: 1, opacity: 1 }}
@@ -19,7 +31,7 @@ export default function Welcomescreen() {
           ease: ['easeIn', 'easeOut'],
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="md:hidden  bg-[#f0f0f0] w-full pb-4"
+        className="md:hidden w-full pb-4"
       >
         <div className="flex flex-col-reverse h-auto w-[100%] relative">
           {/* <Separator className="mt-3" /> */}
@@ -41,7 +53,7 @@ export default function Welcomescreen() {
 
           {/** Absolute Text on top of Image */}
 
-          <div className="absolute h-auto w-[100%] bg-gradient-to-t from-[rgba(0,0,0,0.85)] to-transparent rounded-2xl">
+          <div className="absolute h-auto w-[100%] bg-gradient-to-t from-[rgba(0,0,0,0.85)] to-transparent ">
             <h1 className="mt-3 px-4 text-white flex flex-col">
               <span className="font-extrabold text-2xl">IncuVera</span>
               <span className="font-light">
@@ -74,7 +86,7 @@ export default function Welcomescreen() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-full"
+        className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-auto"
       >
         <div className="flex flex-row-reverse items-center justify-center ">
           <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] lg:w-130 lg:h-140 mt-4 rounded-2xl overflow-hidden">
@@ -110,6 +122,51 @@ export default function Welcomescreen() {
               </Button>
             </div>
           </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ scale: 0.6, opacity: 0.8 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.2,
+          scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
+        }}
+        className="h-40 md:min-h-50 bg-pink-700 flex justify-center items-center relative"
+      >
+        <div className="w-10">
+          <ChevronLeft />
+        </div>
+
+        <div className="w-full md:w-3/4 min-h-40 bg-pink-600 flex md:flex-row justify-center items-center overflow-hidden">
+          {/* mobile */}
+          <div className="flex md:hidden justify-center items-center gap-3">
+            <div>
+              <ChevronLeft />
+            </div>
+            <div className="h-35 w-55 flex justify-center items-center bg-pink-400">
+              {Services[numService]}
+            </div>
+            <div>
+              <ChevronRight />
+            </div>
+          </div>
+
+          {/* desktop */}
+
+          <div className="flex justify-center items-center gap-3">
+            {Services.map((indx, idx) => (
+              <div
+                key={idx}
+                className="h-35 w-55 flex justify-center items-center bg-pink-400"
+              >
+                {indx}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-10">
+          <ChevronRight />
         </div>
       </motion.div>
     </div>

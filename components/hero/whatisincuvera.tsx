@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function WhatisIncuvera() {
   return (
-    <div className="flex justify-center items-center md:h-3/4 w-full">
+    <div className="flex justify-center items-center md:h-2/4 w-full">
       {/* <div className="md:hidden">
         <div className="w-full bg-[#1d1d1d] h-[500px] pb-5">
           <div>
