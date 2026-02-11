@@ -9,7 +9,7 @@ import * as motion from 'motion/react-client';
 
 export default function Topbanner() {
   return (
-    <div className="h-2/3">
+    <div className="md:h-2/3 h-auto">
       <div className="h-[120px] w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}

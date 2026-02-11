@@ -13,7 +13,7 @@ import What from '@/components/hero/whatisincuvera';
 import Rowsection from '@/components/hero/rowsection';
 import Packages from '@/components/hero/packages';
 import Whatisincuvera from '@/components/hero/whatisincuvera';
-import Bottomtab from '@/components/hero/bottomtab';
+import Aboutustab from '@/components/hero/bottomtab';
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
       <Whatisincuvera />
       <br />
       <Packages />
-      <Bottomtab />
+      <Aboutustab />
       {/*<Middle />
       <br />
       <Whocanapply />

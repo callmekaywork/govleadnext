@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function WhatisIncuvera() {
   return (
-    <div className="flex justify-center items-center h-2/3 w-full">
+    <div className="flex justify-center items-center md:h-2/3 w-full">
       {/* <div className="md:hidden">
         <div className="w-full bg-[#1d1d1d] h-[500px] pb-5">
           <div>
@@ -35,14 +35,14 @@ export default function WhatisIncuvera() {
             </span>
           ))}
         </div> */}
-      <div className="md:block w-3/4">
-        <div className="h-30 bg-[#ee5050] flex justify-start items-center mb-2">
+      <div className="md:block md:w-3/4 w-full px-2">
+        <div className="h-30 flex justify-start items-center mb-2">
           <h1 className=" w-full  font-semibold text-6xl p-2 ">
             What is IncuVera
           </h1>
         </div>
-        <div className="flex flex-col bg-[#30c078] md:flex md:flex-row md:justify-center w-full md:h-[400px] items-center">
-          <div className="flex justify-center items-center mx-2">
+        <div className="flex flex-col md:flex md:flex-row md:justify-center w-full md:h-[400px] items-center">
+          <div className="flex justify-center items-center md:mx-2">
             <div className="h-[300px] w-full mb-2 md:mb-0 md:w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
               <Image
                 width={980}
