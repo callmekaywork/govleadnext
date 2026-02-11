@@ -12,6 +12,14 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 export default function Welcomescreen() {
   const [numService, setNumService] = useState(1);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handlePrev = () => {
+    setCurrentIndex(prev => (prev === 0 ? Services.length - 1 : prev - 1));
+  };
+  const handleNext = () => {
+    setCurrentIndex(prev => (prev === Services.length - 1 ? 0 : prev + 1));
+  };
+
   const Services = [
     'Business Audit',
     'Strategic Planning',
@@ -140,7 +148,7 @@ export default function Welcomescreen() {
 
         <div className="w-full md:w-3/4 min-h-40 bg-pink-600 flex md:flex-row justify-center items-center overflow-hidden">
           {/* mobile */}
-          <div className="flex md:hidden justify-center items-center gap-3">
+          {/* <div className="flex md:hidden justify-center items-center gap-3">
             <div>
               <ChevronLeft />
             </div>
@@ -150,11 +158,28 @@ export default function Welcomescreen() {
             <div>
               <ChevronRight />
             </div>
-          </div>
+          </div> */}
 
           {/* desktop */}
 
-          <div className="flex justify-center items-center gap-3">
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <button onClick={handlePrev}>◀</button>
+              <div
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                {Services[currentIndex]}
+              </div>
+              <button onClick={handleNext}>▶</button>
+            </div>
+          </div>
+
+          {/* <div className="flex justify-center items-center gap-3">
             {Services.map((indx, idx) => (
               <div
                 key={idx}
@@ -163,7 +188,7 @@ export default function Welcomescreen() {
                 {indx}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="w-10">
           <ChevronRight />
