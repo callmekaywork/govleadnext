@@ -35,15 +35,16 @@ export default function WhatisIncuvera() {
             </span>
           ))}
         </div> */}
-      <div className="md:block md:w-3/4 w-full px-2">
+      <div className="md:block md:w-5/6 lg:w-4/5 w-full px-2">
         <div className="h-30 w-full flex justify-start items-center mb-2 lg:justify-center">
           <h1 className="   font-semibold text-6xl p-2 ">
             What is <span className="text-green-500">IncuVera</span>?
           </h1>
         </div>
+
         <div className="flex flex-col md:flex md:flex-row md:justify-center w-full md:h-[400px] items-center">
-          <div className="flex justify-center items-center md:mx-2">
-            <div className="h-[300px] w-full mb-2 md:mb-0 md:w-[450px] bg-[#7a7a7a] relative flex justify-center items-center overflow-hidden">
+          <div className="flex justify-center items-center md:mx-2 w-full">
+            <div className="h-[300px] w-full mb-2 md:mb-0 md:w-2/3 bg-[#7a7a7a] flex justify-center items-center overflow-hidden">
               <Image
                 width={980}
                 height={980}
@@ -54,7 +55,7 @@ export default function WhatisIncuvera() {
             </div>
           </div>
 
-          <div className="p-5 bg-[#373738] h-[300px] md:w-[400px] flex flex-col gap-5">
+          <div className="p-5 bg-[#373738] h-[300px] md:w-full flex flex-col gap-5">
             <div className="text-white flex flex-col gap-2">
               <span>
                 IncuVera is a business incubation and enterprise development

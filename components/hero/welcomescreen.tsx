@@ -29,8 +29,8 @@ export default function Welcomescreen() {
   ];
 
   return (
-    <div className="md:h-auto md:mb-10 flex flex-col md:gap-10 bg-[#f0f0f0]">
-      <div className="h-20 md:h-30 w-full"></div>
+    <div className="md:h-auto md:mb-10 flex flex-col bg-[#f0f0f0]">
+      <div className="h-15 md:h-30 w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
         whileInView={{ scale: 1, opacity: 1 }}
@@ -39,11 +39,9 @@ export default function Welcomescreen() {
           ease: ['easeIn', 'easeOut'],
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="md:hidden w-full pb-4"
+        className="md:hidden w-full pb-4 "
       >
         <div className="flex flex-col-reverse h-auto w-[100%] relative">
-          {/* <Separator className="mt-3" /> */}
-
           {/* Background image */}
           <div className="flex justify-center items-center  h-[500px] w-[100%] mt-4 overflow-hidden">
             <Image
@@ -71,7 +69,7 @@ export default function Welcomescreen() {
 
             {/* <Separator /> */}
 
-            <div className="flex flex-col h-auto px-4 w-full bg-gradient-to-t from-[rgba(0,0,0,0.55)] to-transparent rounded-2xl">
+            <div className="flex flex-col h-auto px-4 w-full bg-gradient-to-t from-[rgba(0,0,0,0.55)] to-transparent ">
               <span className="h-[40px] w-full flex justify-center items-center my-2 font-bold text-3xl text-green-500">
                 Join us Today!
               </span>
@@ -140,13 +138,15 @@ export default function Welcomescreen() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="h-40 md:min-h-50 bg-pink-700 flex justify-center items-center relative"
+        className="h-50 md:min-h-60  flex justify-center items-center relative"
       >
         <div className="w-10">
-          <ChevronLeft />
+          <button onClick={handlePrev}>
+            <ChevronLeft />
+          </button>
         </div>
 
-        <div className="w-full md:w-3/4 min-h-40 bg-pink-600 flex md:flex-row justify-center items-center overflow-hidden">
+        <div className="relative w-full md:w-3/4 min-h-40  flex md:flex-row justify-center items-center overflow-hidden">
           {/* mobile */}
           {/* <div className="flex md:hidden justify-center items-center gap-3">
             <div>
@@ -159,26 +159,43 @@ export default function Welcomescreen() {
               <ChevronRight />
             </div>
           </div> */}
-
           {/* desktop */}
-
+          <div className="absolute left-0 top-0 h-full w-52 bg-gradient-to-r from-gray-100 to-transparent pointer-events-none" />
+          {/* Right fade */}
+          <div className="absolute right-0 top-0 h-full w-52 bg-gradient-to-l from-gray-100 to-transparent pointer-events-none" />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <button onClick={handlePrev}>◀</button>
-              <div
+              <motion.div
                 style={{
                   flex: 1,
                   textAlign: 'center',
                   fontSize: '1.5rem',
                   fontWeight: 'bold',
                 }}
+                initial={{ scale: 0.6 }}
+                animate={{ scale: 1 }}
+                className="text-[10px]  flex flex-row md:gap-2 "
               >
-                {Services[currentIndex]}
-              </div>
-              <button onClick={handleNext}>▶</button>
+                <p className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center w-40 lg:w-60">
+                  {
+                    Services[
+                      currentIndex < 1 ? Services.length - 1 : currentIndex - 1
+                    ]
+                  }
+                </p>
+                <p className="text-[13px] p-2 bg-amber-400 h-30 flex justify-center items-center w-40 lg:w-60">
+                  {Services[currentIndex]}
+                </p>
+                <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
+                  {
+                    Services[
+                      currentIndex == Services.length - 1 ? 0 : currentIndex + 1
+                    ]
+                  }
+                </p>
+              </motion.div>
             </div>
           </div>
-
           {/* <div className="flex justify-center items-center gap-3">
             {Services.map((indx, idx) => (
               <div
@@ -191,7 +208,9 @@ export default function Welcomescreen() {
           </div> */}
         </div>
         <div className="w-10">
-          <ChevronRight />
+          <button onClick={handleNext}>
+            <ChevronRight />
+          </button>
         </div>
       </motion.div>
     </div>
