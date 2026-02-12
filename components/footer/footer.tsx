@@ -15,14 +15,17 @@ export default function Footer() {
 
         <div className="h-10 w-full"></div>
 
-        <section className="w-full flex flex-col justify-start px-2 gap-3">
-          <h1 className="text-3xl">Support?</h1>
-          <p className="cursor-pointer">Contact us</p>
+        <section className="w-full flex flex-row justify-center px-2 gap-3">
+          <div>
+            <h1 className="text-3xl">Support?</h1>
+            <p className="cursor-pointer">Contact us</p>
+            <p>Pearltyobela@gmail.com.</p>
+          </div>
         </section>
 
         {/* <Separator color="white" /> */}
-        <section className="min-h-100 bg-[#2e2e2e] w-full">
-          <Accordion
+        <section className="min-h-20 bg-[#2e2e2e] w-full">
+          {/* <Accordion
             type="single"
             collapsible
             defaultValue="shipping"
@@ -53,7 +56,7 @@ export default function Footer() {
                 hours during business days.
               </AccordionContent>
             </AccordionItem>
-          </Accordion>
+          </Accordion> */}
         </section>
 
         <section>
