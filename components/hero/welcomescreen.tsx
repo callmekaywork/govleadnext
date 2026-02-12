@@ -142,7 +142,7 @@ export default function Welcomescreen() {
       >
         <div className="w-10">
           <button onClick={handlePrev}>
-            <ChevronLeft />
+            <ChevronLeft color={'white'} />
           </button>
         </div>
 
@@ -160,9 +160,9 @@ export default function Welcomescreen() {
             </div>
           </div> */}
           {/* desktop */}
-          <div className="absolute left-0 top-0 h-full w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 h-full w-2 md:w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none" />
           {/* Right fade */}
-          <div className="absolute right-0 top-0 h-full w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 h-full w-2 md:w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none" />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <motion.div
@@ -209,7 +209,7 @@ export default function Welcomescreen() {
         </div>
         <div className="w-10">
           <button onClick={handleNext}>
-            <ChevronRight />
+            <ChevronRight color={'white'} />
           </button>
         </div>
       </motion.div>
