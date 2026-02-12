@@ -29,7 +29,7 @@ export default function Welcomescreen() {
   ];
 
   return (
-    <div className="md:h-auto md:mb-10 flex flex-col bg-[#f0f0f0]">
+    <div className="md:h-auto md:mb-10 flex flex-col bg-[#0c0c0c]">
       <div className="h-15 md:h-30 w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
@@ -160,9 +160,9 @@ export default function Welcomescreen() {
             </div>
           </div> */}
           {/* desktop */}
-          <div className="absolute left-0 top-0 h-full w-52 bg-gradient-to-r from-gray-100 to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 h-full w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none" />
           {/* Right fade */}
-          <div className="absolute right-0 top-0 h-full w-52 bg-gradient-to-l from-gray-100 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 h-full w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none" />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <motion.div
@@ -183,7 +183,7 @@ export default function Welcomescreen() {
                     ]
                   }
                 </p>
-                <p className="text-[13px] p-2 bg-amber-400 h-30 flex justify-center items-center w-40 lg:w-60">
+                <p className="text-[13px] p-2 bg-amber-400 h-30 flex justify-center items-center w-100 md:w-40 lg:w-60">
                   {Services[currentIndex]}
                 </p>
                 <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
