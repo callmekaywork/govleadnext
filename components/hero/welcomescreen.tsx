@@ -60,7 +60,7 @@ export default function Welcomescreen() {
           {/** Absolute Text on top of Image */}
 
           <div className="absolute h-auto w-[100%] bg-gradient-to-t from-[rgba(0,0,0,0.85)] to-transparent ">
-            <div className="mt-3 px-4 text-white flex flex-col">
+            <div className="my-5 px-4 text-white flex flex-col">
               <span className="font-extrabold text-5xl">IncuVera</span>
               <span className="font-light">
                 Nurturing Innovation Empowering Growth
@@ -77,7 +77,7 @@ export default function Welcomescreen() {
 
             {/* <Separator /> */}
 
-            <div className="flex flex-col h-auto px-4 w-full bg-gradient-to-t from-[rgba(0,0,0,0.55)] to-transparent ">
+            {/* <div className="flex flex-col h-auto px-4 w-full bg-gradient-to-t from-[rgba(0,0,0,0.55)] to-transparent ">
               <span className="h-[40px] w-full flex justify-center items-center my-2 font-bold text-3xl text-green-500">
                 Join us Today!
               </span>
@@ -88,7 +88,7 @@ export default function Welcomescreen() {
                   </Button>
                 </Link>
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>
@@ -147,10 +147,13 @@ export default function Welcomescreen() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="h-50 md:min-h-60  flex justify-center items-center relative"
+        className="h-80 md:min-h-60 md:bg-[#f0f0f0] flex justify-center items-center relative"
       >
         <div className="w-10">
-          <button onClick={handlePrev}>
+          <button
+            onClick={handlePrev}
+            className="md:bg-black md:h-20 md:w-20 flex justify-center items-center"
+          >
             <ChevronLeft color={'white'} />
           </button>
         </div>
@@ -169,9 +172,9 @@ export default function Welcomescreen() {
             </div>
           </div> */}
           {/* desktop */}
-          <div className="absolute left-0 top-0 h-full w-2 md:w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 h-full w-2 md:w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none md:hidden" />
           {/* Right fade */}
-          <div className="absolute right-0 top-0 h-full w-2 md:w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 h-full w-2 md:w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none md:hidden" />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <motion.div
@@ -183,7 +186,7 @@ export default function Welcomescreen() {
                 }}
                 initial={{ scale: 0.6 }}
                 animate={{ scale: 1 }}
-                className="text-[10px]  flex flex-row md:gap-2 "
+                className="text-[10px]  flex items-center flex-row md:gap-2 "
               >
                 <p className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center w-40 lg:w-60">
                   {
@@ -192,7 +195,7 @@ export default function Welcomescreen() {
                     ]
                   }
                 </p>
-                <p className="text-[13px] p-2 bg-amber-400 h-30 flex justify-center items-center w-100 md:w-40 lg:w-60">
+                <p className="text-[13px] p-2 bg-amber-400 h-30 md:h-50 flex justify-center items-center w-100 md:w-40 lg:w-60">
                   {Services[currentIndex]}
                 </p>
                 <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
@@ -217,7 +220,10 @@ export default function Welcomescreen() {
           </div> */}
         </div>
         <div className="w-10">
-          <button onClick={handleNext}>
+          <button
+            onClick={handleNext}
+            className="md:bg-black md:h-20 md:w-20 flex justify-center items-center"
+          >
             <ChevronRight color={'white'} />
           </button>
         </div>

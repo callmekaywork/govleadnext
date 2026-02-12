@@ -20,6 +20,7 @@ export default function Footer() {
             <h1 className="text-3xl">Support?</h1>
             <p className="cursor-pointer">Contact us</p>
             <p>Pearltyobela@gmail.com.</p>
+            <p>0843116547</p>
           </div>
         </section>
 
