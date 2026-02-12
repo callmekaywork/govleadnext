@@ -60,12 +60,20 @@ export default function Welcomescreen() {
           {/** Absolute Text on top of Image */}
 
           <div className="absolute h-auto w-[100%] bg-gradient-to-t from-[rgba(0,0,0,0.85)] to-transparent ">
-            <h1 className="mt-3 px-4 text-white flex flex-col">
-              <span className="font-extrabold text-2xl">IncuVera</span>
+            <div className="mt-3 px-4 text-white flex flex-col">
+              <span className="font-extrabold text-5xl">IncuVera</span>
               <span className="font-light">
                 Nurturing Innovation Empowering Growth
               </span>
-            </h1>
+              <p className="w-full text-[12px] text-ellipsis">
+                IncuVera is a forward-thinking business incubation company
+                specializing in strategic business development, entrepreneurial
+                support, and sustainable enterprise growth. We are committed to
+                nurturing startups and growing businesses by providing
+                structured guidance, practical tools, and access to valuable
+                networks.
+              </p>
+            </div>
 
             {/* <Separator /> */}
 
@@ -117,10 +125,11 @@ export default function Welcomescreen() {
               </span>
             </h1>
             <p className="w-[300px] text-[15px]">
-              Structured Business Incubation A comprehensive six-month
-              incubation programme designed to support early-stage and growing
-              businesses with the tools, systems, and strategies required to
-              scale sustainably.
+              IncuVera is a forward-thinking business incubation company
+              specializing in strategic business development, entrepreneurial
+              support, and sustainable enterprise growth. We are committed to
+              nurturing startups and growing businesses by providing structured
+              guidance, practical tools, and access to valuable networks.
             </p>
             <div>
               <Button className="h-[50px] w-[160px] mt-2 rounded-none bg-[#303030] text-white flex justify-center hover:cursor-pointer hover:bg-[#292833]">

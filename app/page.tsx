@@ -18,7 +18,7 @@ import Welcomescreen from '@/components/hero/welcomescreen';
 
 export default function Home() {
   return (
-    <div className="h-screen relative">
+    <div className="h-auto relative">
       <Header />
 
       <Welcomescreen />
