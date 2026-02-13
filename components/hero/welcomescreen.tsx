@@ -147,7 +147,7 @@ export default function Welcomescreen() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="h-80 md:min-h-60 md:bg-[#f0f0f0] flex justify-center items-center relative"
+        className="h-80 md:min-h-100 md:bg-[#f0f0f0] flex justify-center items-center relative"
       >
         <div className="w-10">
           <button
