@@ -164,9 +164,9 @@ export default function Welcomescreen() {
               guidance, practical tools, and access to valuable networks.
             </p>
             <div>
-              <Button className="h-[50px] w-[160px] mt-2 rounded-none bg-[#303030] text-white flex justify-center hover:cursor-pointer hover:bg-[#292833]">
+              {/* <Button className="h-[50px] w-[160px] mt-2 rounded-none bg-[#303030] text-white flex justify-center hover:cursor-pointer hover:bg-[#292833]">
                 Apply Now
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
