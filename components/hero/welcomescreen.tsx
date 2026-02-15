@@ -7,10 +7,12 @@ import Link from 'next/link';
 
 import * as motion from 'motion/react-client';
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShieldHalf } from 'lucide-react';
 
 export default function Welcomescreen() {
   const [numService, setNumService] = useState(1);
+
+  const iconSize = 40;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const handlePrev = () => {
@@ -21,15 +23,53 @@ export default function Welcomescreen() {
   };
 
   const Services = [
-    'Business Audit',
-    'Strategic Planning',
-    'Asset Building (Brand & Digital Assets)',
-    'Training & Coaching',
-    'Monitoring & Performance Support',
+    {
+      name: 'Business Audit',
+      url: '/packages_1.jpeg',
+      description:
+        'We conduct a comprehensive assessment of your business operations, financial structure, systems, and market positioning to identify strengths, gaps, and growth opportunities.',
+      icon: <ShieldHalf size={iconSize} />,
+    },
+    {
+      name: 'Strategic Planning',
+      url: '/packages_2.jpeg',
+      description:
+        'We develop clear, results-driven strategies aligned with your business vision and long-term objectives. This includes goal setting, operational structuring, competitive positioning, and measurable growth planning.',
+      icon: <ShieldHalf size={iconSize} />,
+    },
+    {
+      name: 'Asset Building (Brand & Digital Assets)',
+      url: '/packages_3.jpeg',
+      description:
+        'We assist businesses in developing strong, professional brand assets that enhance credibility and visibility in the marketplace. This includes logo design, website development, brand identity creation, and digital presence optimization. Our focus is to ensure your business is positioned professionally and competitively across all platforms.',
+      icon: <ShieldHalf size={iconSize} />,
+    },
+    {
+      name: 'Training & Coaching',
+      url: '/packages_4.jpeg',
+      description:
+        'We provide structured training programs and personalized coaching designed to equip entrepreneurs with essential leadership, operational, and growth management skills.',
+      icon: <ShieldHalf size={iconSize} />,
+    },
+    {
+      name: 'Monitoring & Performance Support',
+      url: '/packages_5.jpeg',
+      description:
+        'We offer ongoing monitoring and accountability support to ensure strategic plans are effectively implemented and measurable progress is achieved.',
+      icon: <ShieldHalf size={iconSize} />,
+    },
+  ];
+
+  const colors = [
+    'bg-green-400',
+    'bg-teal-500',
+    'bg-rose-400',
+    'bg-amber-300',
+    'bg-red-500',
   ];
 
   return (
-    <div className="md:h-auto md:mb-10 flex flex-col bg-[#0c0c0c]">
+    <div className="h-auto md:h-screen md:mb-10 flex flex-col bg-[#0c0c0c]">
       <div className="h-15 md:h-30 w-full"></div>
       <motion.div
         initial={{ scale: 0.6, opacity: 0.8 }}
@@ -39,7 +79,7 @@ export default function Welcomescreen() {
           ease: ['easeIn', 'easeOut'],
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="md:hidden w-full pb-4 "
+        className="md:hidden  w-full b-4 "
       >
         <div className="flex flex-col-reverse h-auto w-[100%] relative">
           {/* Background image */}
@@ -100,7 +140,7 @@ export default function Welcomescreen() {
           duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
-        className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-auto"
+        className="hidden md:flex justify-center bg-[#f0f0f0] w-full pb-8 h-4/5"
       >
         <div className="flex flex-row-reverse items-center justify-center ">
           <div className="flex justify-center items-center bg-gray-200 h-[400px] w-[350px] lg:w-130 lg:h-140 mt-4 rounded-2xl overflow-hidden">
@@ -145,6 +185,47 @@ export default function Welcomescreen() {
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{
           duration: 0.2,
+          ease: ['easeIn', 'easeOut'],
+          scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
+        }}
+        className="relative h-30 md:h-1/5 w-full bg-gray-100 overflow-x-hidden "
+      >
+        <div className="absolute left-0 top-0 h-full w-20 md:w-52 bg-gradient-to-r from-white to-white/0 pointer-events-none " />
+        <div className="absolute right-0 top-0 h-full w-20 md:w-52 bg-gradient-to-l from-white to-white/0 pointer-events-none " />
+        <motion.div
+          animate={{ x: ['0%', '-100%'] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 15, // adjust speed here
+            ease: 'linear',
+          }}
+          className="h-full flex  whitespace-nowrap flex-row justify-center items-center w-full gap-10 "
+        >
+          {Services.map((cont, idx) => (
+            <div
+              key={idx}
+              className="md:text-2xl w-100 md:min-w-100 md:max-w-180 flex  flex-rowjustify-center items-center"
+            >
+              {cont.name}
+            </div>
+          ))}
+          {Services.map((cont, idx) => (
+            <div
+              key={idx}
+              className="md:text-2xl w-100 md:min-w-100 md:max-w-180 flex flex-row justify-center items-center"
+            >
+              {cont.name}
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* <motion.div
+        initial={{ scale: 0.6, opacity: 0.8 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.2,
           scale: { type: 'spring', visualDuration: 0.1, bounce: 0.2 },
         }}
         className="h-80 md:min-h-100 md:bg-[#f0f0f0] flex justify-center items-center relative"
@@ -159,21 +240,8 @@ export default function Welcomescreen() {
         </div>
 
         <div className="relative w-full md:w-3/4 min-h-40  flex md:flex-row justify-center items-center overflow-hidden">
-          {/* mobile */}
-          {/* <div className="flex md:hidden justify-center items-center gap-3">
-            <div>
-              <ChevronLeft />
-            </div>
-            <div className="h-35 w-55 flex justify-center items-center bg-pink-400">
-              {Services[numService]}
-            </div>
-            <div>
-              <ChevronRight />
-            </div>
-          </div> */}
-          {/* desktop */}
+         
           <div className="absolute left-0 top-0 h-full w-2 md:w-52 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none md:hidden" />
-          {/* Right fade */}
           <div className="absolute right-0 top-0 h-full w-2 md:w-52 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none md:hidden" />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -188,36 +256,43 @@ export default function Welcomescreen() {
                 animate={{ scale: 1 }}
                 className="text-[10px]  flex items-center flex-row md:gap-2 "
               >
-                <p className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center w-40 lg:w-60">
+                <div className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center  w-40 lg:w-60">
                   {
                     Services[
                       currentIndex < 1 ? Services.length - 1 : currentIndex - 1
-                    ]
+                    ].name
                   }
-                </p>
-                <p className="text-[13px] p-2 bg-amber-400 h-30 md:h-50 flex justify-center items-center w-100 md:w-40 lg:w-60">
-                  {Services[currentIndex]}
-                </p>
-                <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
+                </div>
+                <div
+                  className={`${colors[currentIndex == Services.length - 1 ? 0 : currentIndex + 1]} text-[13px] p-2  h-70 md:h-50 flex flex-col-reverse justify-center items-center w-60 md:w-60 lg:w-80 relative`}
+                >
+                  <div
+                    className={`${colors[currentIndex]} absolute z-5 bottom-3  flex justify-center items-center flex-col h-30 w-50 md:w-50 lg:w-50`}
+                  >
+                    <p>{Services[currentIndex].name}</p>
+                    {Services[currentIndex].icon}
+                  </div>
+                  <div className="w-full h-full flex justify-center items-center">
+                    <Image
+                      src={Services[currentIndex].url}
+                      width={300}
+                      height={260}
+                      alt=""
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+                <p className="text-[13px] p-2 bg-red-500 hidden md:flex justify-center items-center  w-40 lg:w-60">
                   {
                     Services[
                       currentIndex == Services.length - 1 ? 0 : currentIndex + 1
-                    ]
+                    ].name
                   }
                 </p>
               </motion.div>
             </div>
           </div>
-          {/* <div className="flex justify-center items-center gap-3">
-            {Services.map((indx, idx) => (
-              <div
-                key={idx}
-                className="h-35 w-55 flex justify-center items-center bg-pink-400"
-              >
-                {indx}
-              </div>
-            ))}
-          </div> */}
+         
         </div>
         <div className="w-10">
           <button
@@ -227,7 +302,7 @@ export default function Welcomescreen() {
             <ChevronRight color={'white'} />
           </button>
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

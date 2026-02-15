@@ -3,7 +3,7 @@ import * as motion from 'motion/react-client';
 
 export default function Aboutustab() {
   return (
-    <div className="min-h-3/4 w-full flex flex-col justify-center items-center">
+    <div className="h-screen w-full flex flex-col justify-center items-center">
       <div className="w-3/4 h-30 flex items-center mt-5 mb-2 hover:bg-gray-300 px-2 lg:justify-center">
         <h1 className="text-6xl">About Incuvera</h1>
       </div>

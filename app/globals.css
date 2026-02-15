@@ -121,6 +121,10 @@
   }
 }
 
+body {
+  scroll-behavior: smooth;
+}
+
 .hovertab {
   box-shadow: 20px black;
 }
