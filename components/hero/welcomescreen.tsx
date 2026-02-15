@@ -60,14 +60,6 @@ export default function Welcomescreen() {
     },
   ];
 
-  const colors = [
-    'bg-green-400',
-    'bg-teal-500',
-    'bg-rose-400',
-    'bg-amber-300',
-    'bg-red-500',
-  ];
-
   return (
     <div className="h-auto md:h-screen md:mb-10 flex flex-col bg-[#0c0c0c]">
       <div className="h-15 md:h-30 w-full"></div>

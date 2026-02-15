@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChevronRight, ShieldHalf } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShieldHalf } from 'lucide-react';
 import * as motion from 'motion/react-client';
 
 export default function Packages() {
@@ -56,68 +56,81 @@ export default function Packages() {
     },
   ];
 
+  const colors = [
+    'bg-green-400',
+    'bg-teal-500',
+    'bg-rose-400',
+    'bg-amber-300',
+    'bg-red-500',
+  ];
+
   return (
-    <div className="min-h-screen md:h-screen w-full bg-white flex justify-center items-center flex-col py-10 px-2">
+    <div className="min-h-170  w-full bg-white flex justify-center items-center flex-col py-5 px-2">
       <div className="h-30 md:w-3/4 w-full flex items-center lg:justify-center mb-5 mt-2 ">
         <h1 className="text-6xl font-semibold">What we offer!</h1>
       </div>
-      <div className="w-full md:w-3/4 flex justify-center ">
+
+      <motion.div
+        style={{
+          flex: 1,
+          textAlign: 'center',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+        }}
+        initial={{ scale: 0.6 }}
+        animate={{ scale: 1 }}
+        className="text-[10px] flex items-center flex-row h-full md:gap-2 overflow-x-no-scroll justify-center md:w-2/3 gap-5 no-scrollbar px-2 md:px-0 relative"
+      >
         <div className="w-10">
           <button
             onClick={handleNext}
-            className="md:bg-black md:h-20 md:w-20 flex justify-center items-center"
+            className="bg-black h-10 w-10 rounded-full md:h-20 md:w-20 flex justify-center items-center absolute top-55 right-0 z-20"
           >
-            <ChevronRight color={'black'} />
+            <ChevronRight color={'white'} />
           </button>
         </div>
 
-        <motion.div
-          style={{
-            flex: 1,
-            textAlign: 'center',
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-          }}
-          initial={{ scale: 0.6 }}
-          animate={{ scale: 1 }}
-          className="text-[10px]  flex items-center flex-col h-full md:gap-2 overflow-x-no-scroll no-scrollbar"
+        <p className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center w-40 lg:w-60">
+          {
+            Services[currentIndex < 1 ? Services.length - 1 : currentIndex - 1]
+              .name
+          }
+        </p>
+        <div
+          className={`${colors[currentIndex]} relative text-[13px] p-2 bg-amber-400 h-110 md:h-100 flex flex-col justify-center items-center w-full md:w-60 lg:w-80`}
         >
-          <p className="text-[13px] p-2 bg-blue-400 hidden md:flex h-30  justify-center items-center w-40 lg:w-60">
-            {
-              Services[
-                currentIndex < 1 ? Services.length - 1 : currentIndex - 1
-              ].name
-            }
-          </p>
-          <p className="text-[13px] p-2 bg-amber-400 h-30 md:h-50 flex justify-center items-center w-100 md:w-40 lg:w-60">
-            {Services[currentIndex].name}
-          </p>
-          <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
-            {
-              Services[
-                currentIndex == Services.length - 1 ? 0 : currentIndex + 1
-              ].name
-            }
-          </p>
-        </motion.div>
-        {/* {Services.map((itm, index) => (
-            <div
-              key={index}
-              className="flex flex-col justify-center items-center p-2 w-full md:w-74 h-100 bg-[#7e7d88] text-white text-center  mx-1 "
-            >
-              <Image src={`${itm.url}`} width={180} height={150} alt="" />
+          <div className="absolute top-0 z-10 left-0 h-full w-full flex justify-end flex-col py-10">
+            <p className="bg-white text-[20px] h-15 flex justify-center items-center">
+              {Services[currentIndex].name}
+            </p>
+            <p className="bg-gray-100 w-full py-5 text-[12px]">
+              {Services[currentIndex].description}
+            </p>
+          </div>
+          <Image
+            src={Services[currentIndex].url}
+            width={400}
+            height={600}
+            alt=""
+            className="object-cover h-200 w-300 opacity-40"
+          />
+        </div>
+        <p className="text-[13px] p-2 bg-red-500 hidden md:flex h-30 justify-center items-center w-40 lg:w-60">
+          {
+            Services[currentIndex == Services.length - 1 ? 0 : currentIndex + 1]
+              .name
+          }
+        </p>
 
-              <span className="bg-pink-500 flex w-full h-auto justify-center items-center">
-                {itm.name}
-              </span>
-              <div>
-                <p className="flex text-[12px] w-70 h-40 bg-amber-500">
-                  {itm.description}
-                </p>
-              </div>
-            </div>
-          ))} */}
-      </div>
+        <div className="w-10">
+          <button
+            onClick={handleNext}
+            className="bg-black h-10 w-10 rounded-full md:h-20 md:w-20 flex justify-center items-center absolute top-55 left-0 z-20"
+          >
+            <ChevronLeft color={'white'} />
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 }
