@@ -60,7 +60,7 @@ export const Header = () => {
       <div className="flex flex-row-reverse w-full md:w-[80%] lg:w-[70%] justify-between">
         {/** Small menu Navigation */}
         <div className="bg-none h-[70px] w-[70px] flex items-center justify-center mx-[25px] md:hidden">
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger>
               <AiOutlineMenu size={25} />
             </SheetTrigger>
@@ -122,7 +122,7 @@ export const Header = () => {
                 </div>
               </div>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
 
         {/** Large menu Navigation */}
@@ -222,7 +222,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="hidden  w-full h-7  md:flex flex-row justify-center items-center gap-4 text-[12px]">
-        <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
+        {/* <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
           Investors
         </p>
         <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
@@ -236,7 +236,7 @@ export const Header = () => {
         </p>
         <p className="cursor-pointer hover:text-white hover:bg-amber-600 px-4 transition-all delay-100 duration-100">
           About
-        </p>
+        </p> */}
       </div>
     </div>
   );
