@@ -1,5 +1,3 @@
-import { Header } from '@/components/header/header';
-
 import Footer from '@/components/footer/footer';
 import Topbanner from '@/components/hero/welcomescreen';
 
@@ -15,17 +13,18 @@ import Packages from '@/components/hero/packages';
 import Whatisincuvera from '@/components/hero/whatisincuvera';
 import Aboutustab from '@/components/hero/aboutustab';
 import Welcomescreen from '@/components/hero/welcomescreen';
+import InformationSlider from '@/components/hero/info-slider';
+import HeroModern from '@/components/hero/mordenhero';
 
 export default function Home() {
   return (
     <div className="h-auto relative">
-      <Header />
-
-      <Welcomescreen />
+      <HeroModern />
+      {/* <Welcomescreen /> */}
       <Whatisincuvera />
-      <br />
-      <Packages />
-      <Aboutustab />
+      <InformationSlider />
+      {/* <Packages /> */}
+      {/* <Aboutustab /> */}
       {/*<Middle />
       <br />
       <Whocanapply />

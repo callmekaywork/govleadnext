@@ -1,18 +1,9 @@
 import Image from 'next/image';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
 
 export default function Footer() {
   return (
     <div>
-      <footer className="h-auto row-start-3 flex gap-[24px] flex-wrap items-center justify-center bg-[#2e2e2e] text-white p-4 mt-10">
-        {/* <p>govern@govlead.co.za</p>
-        <p>0712198630</p> */}
-
+      <footer className="h-auto row-start-3 flex gap-[24px] flex-wrap items-center justify-center bg-[#2e2e2e] dark:bg-neutral-950 text-white p-4">
         <div className="h-10 w-full"></div>
 
         <section className="w-full flex flex-row justify-center px-2 gap-3">
@@ -24,7 +15,7 @@ export default function Footer() {
         </section>
 
         {/* <Separator color="white" /> */}
-        <section className="min-h-20 bg-[#2e2e2e] w-full">
+        <section className="min-h-20 bg-[#2e2e2e] dark:bg-neutral-950 w-full">
           {/* <Accordion
             type="single"
             collapsible

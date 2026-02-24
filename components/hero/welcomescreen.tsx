@@ -185,13 +185,13 @@ export default function Welcomescreen() {
         <div className="absolute left-0 top-0 h-full w-20 md:w-52 bg-gradient-to-r from-white to-white/0 pointer-events-none " />
         <div className="absolute right-0 top-0 h-full w-20 md:w-52 bg-gradient-to-l from-white to-white/0 pointer-events-none " />
         <motion.div
-          animate={{ x: ['0%', '-100%'] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: 'loop',
-            duration: 15, // adjust speed here
-            ease: 'linear',
-          }}
+          // animate={{ x: ['0%', '-100%'] }}
+          // transition={{
+          //   repeat: Infinity,
+          //   repeatType: 'loop',
+          //   duration: 15, // adjust speed here
+          //   ease: 'linear',
+          // }}
           className="h-full flex  whitespace-nowrap flex-row justify-center items-center w-full gap-10 "
         >
           {Services.map((cont, idx) => (

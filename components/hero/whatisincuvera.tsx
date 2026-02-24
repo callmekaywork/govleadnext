@@ -1,80 +1,140 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import * as motion from 'motion/react-client';
+import {
+  AlertCircle,
+  Building2,
+  CheckCircle2,
+  ChevronRight,
+  Target,
+  Users,
+} from 'lucide-react';
 
 export default function WhatisIncuvera() {
   return (
-    <div className="flex justify-center items-center min-h-180 md:h-screen  w-full md:my-10">
-      {/* <div className="md:hidden">
-        <div className="w-full bg-[#1d1d1d] h-[500px] pb-5">
-          <div>
-            <h1 className="text-5xl h-[100px] text-[#e9e9e9] px-4 flex justify-start items-center">
-              what are we?
-            </h1>
-          </div>
-          <div className="p-5 bg-[#373738] h-auto w-[90%] mx-[5%] md:w-[500px]">
-            <span className="text-white">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde,
-              adipisci recusandae similique rerum dolorem fuga voluptatum magni
-              autem nostrum ut, saepe, deleniti fugiat vel reprehenderit vero
-              numquam? molestias? temporibus sint vitae velit, sapiente,
-              veritatis et facilis quam maxime assumenda numquam? Laborum quod
-              autem consequatur reiciendis ex blanditiis, culpa illum unde
-              maxime at iure? Iste, aspernatur.
-            </span>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="md:flex md:flex-col md:justify-start md:w-5/6 lg:w-4/5 2xl:w-3/5 max-h-250 w-full gap-2 px-2 bg-gray-200 py-10">
-        <motion.div className="h-40  md:h-40 w-full flex items-center justify-start lg:justify-center">
-          <h1 className="text-black font-semibold text-6xl p-2 ">
-            What is <span className="text-green-500">IncuVera</span>?
-          </h1>
-        </motion.div>
-
-        <div className="w-full  min-h-100 md:grid md:grid-cols-2 md:grid-rows-2 justify-center items-center p-5 gap-4 flex flex-col">
-          <div className="w-full flex justify-center">
-            <div className="h-auto w-auto md:h-80 md:w-120 mb-2 md:mb-0  flex justify-center items-center overflow-hidden p-3 bg-green-700">
-              <Image
-                width={980}
-                height={980}
-                alt=""
-                src={'/img_1.jpeg'}
-                className="object-fit "
-              />
-            </div>
-          </div>
-          <div className="text-black flex flex-col gap-2 md:flex md:justify-center md:px-20">
-            <span className="italic text-[15px] lg:text-[22px]">
-              IncuVera is a
-              <span className="py-0.5 px-2 bg-orange-500">
-                business incubation
+    <div className="flex md:flex-col justify-center items-center min-h-180 md:min-h-screen bg-neutral-50 dark:bg-neutral-900  w-full ">
+      {/* Mandate Section */}
+      <section className="py-32 px-6 border-y border-neutral-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-emerald-600">
+              The IncuVera Mandate
+            </h2>
+            <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 leading-tight">
+              Entrepreneurial potential is abundant. <br />
+              <span className="text-neutral-400">
+                Structured execution is rare.
               </span>
-              and enterprise development firm focused on helping entrepreneurs
-              build, grow, and scale sustainable businesses.
-            </span>
-          </div>
-          <div className=" md:flex md:justify-center md:px-20 text-black flex flex-col gap-2">
-            <span className="italic text-[15px] lg:text-[22px]">
-              "Through a structured six-month incubation programme, we provide
-              strategic mentorship and professional consultancy designed to
-              strengthen business foundations and drive measurable growth."
-            </span>
-          </div>
-          <div className="w-full flex justify-center">
-            <div className="h-auto w-auto md:h-80 md:w-120 mb-2 md:mb-0  flex justify-center items-center overflow-hidden p-3 bg-gray-500">
-              <Image
-                width={980}
-                height={980}
-                alt=""
-                src={'/img_5.jpeg'}
-                className="object-fit "
-              />
+            </h3>
+            <p className="text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto font-light">
+              IncuVera exists to close that gap — by providing entrepreneurs,
+              professionals, and academics with the systems, strategy,
+              governance, and network required to build sustainable businesses.
+            </p>
+
+            <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-200 dark:border-neutral-900 shadow-sm text-left">
+                <div className="w-12 h-12 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+                  <AlertCircle size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">What we don't do</h4>
+                <p className="text-neutral-500">
+                  We do not offer motivation or generic inspiration. We believe
+                  success is a product of discipline, not just desire.
+                </p>
+              </div>
+              <div className="p-8 bg-neutral-900 dark:bg-neutral-950 text-white rounded-3xl shadow-xl text-left">
+                <div className="w-12 h-12 bg-emerald-500 text-neutral-900 rounded-2xl flex items-center justify-center mb-6">
+                  <CheckCircle2 size={24} />
+                </div>
+                <h4 className="text-lg font-bold mb-2">What we build</h4>
+                <p className="text-neutral-400">
+                  We build structure. We implement the governance, operational
+                  systems, and strategic frameworks that turn ideas into assets.
+                </p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-32 px-6 bg-neutral-50 dark:bg-neutral-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-emerald-600 mb-4">
+              The Process
+            </h2>
+            <h3 className="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              How IncuVera Works
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-1/4 left-0 w-full h-px bg-neutral-100 -z-10" />
+
+            <StepCard
+              number="01"
+              title="Exposure & Qualification"
+              description="Attend our seminars and strategic networking events. Engage with our ecosystem and determine programme fit."
+              icon={<Users className="w-6 h-6" />}
+            />
+            <StepCard
+              number="02"
+              title="Structured Incubation"
+              description="Selected businesses enter a multi-phase transformation framework designed to build clarity, systems, and market readiness."
+              icon={<Building2 className="w-6 h-6" />}
+            />
+            <StepCard
+              number="03"
+              title="Growth & Market Activation"
+              description="We support implementation, revenue acceleration, and long-term performance governance."
+              icon={<Target className="w-6 h-6" />}
+            />
+          </div>
+
+          {/* <div className="mt-24 text-center">
+            <button className="inline-flex items-center gap-2 px-10 py-5 bg-neutral-900 text-white rounded-2xl font-semibold text-lg hover:bg-neutral-800 transition-all shadow-xl">
+              Start Your Journey <ChevronRight size={20} />
+            </button>
+          </div> */}
+        </div>
+      </section>
     </div>
+  );
+}
+
+function StepCard({
+  number,
+  title,
+  description,
+  icon,
+}: {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="relative p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-100 dark:border-neutral-900 hover:border-emerald-200 dark:hover:border-emerald-950 hover:shadow-2xl hover:shadow-emerald-100/50 transition-all group"
+    >
+      <div className="absolute -top-6 left-8 text-6xl font-bold text-neutral-50 opacity-0 group-hover:opacity-100 dark:group-hover:border-emerald-950 transition-opacity font-serif italic">
+        {number}
+      </div>
+      <div className="w-14 h-14 bg-neutral-50 text-neutral-900 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 dark:group-hover:border-emerald-950 group-hover:text-white transition-colors">
+        {icon}
+      </div>
+      <h4 className="text-xl font-bold mb-4 text-neutral-900 dark:text-neutral-200">
+        {title}
+      </h4>
+      <p className="text-neutral-500 leading-relaxed">{description}</p>
+    </motion.div>
   );
 }

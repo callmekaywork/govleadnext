@@ -1,5 +1,7 @@
 /**Mobile first approach */
 
+'use client';
+
 /** icons */
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
@@ -30,17 +32,21 @@ import {
 // } from '@/components/ui/navigation-menu';
 
 /** components  */
-import { Separator } from '@/components/ui/separator';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+// import { Separator } from '@/components/ui/separator';
+// import { Label } from '../ui/label';
+// import { Input } from '../ui/input';
+import { buttonVariants } from '../ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ThemeModeToggle } from '../theme-button';
+// import { useRouter } from 'next/router';
 
-export const Header = () => {
+export default function Header() {
+  // const router = useRouter();
+
   return (
-    <div className="fixed z-30 w-full h-20 md:h-30 flex flex-col items-center bg-white">
-      <div className="flex flex-row justify-center items-center text-[10px] h-[20px] bg-white w-full text-white">
+    <div className="fixed z-30 w-full h-20 md:h-30 flex flex-col items-center bg-white dark:bg-neutral-900">
+      <div className="flex flex-row justify-center items-center text-[10px] h-[20px] bg-white dark:bg-neutral-900 w-full text-white">
         {/* <span className="mx-2">reach IncuVera Management Here: </span>
         <Link href={'pearltyobela@gmail.com'} className="text-white">
           pearltyobela@gmail.com
@@ -123,10 +129,15 @@ export const Header = () => {
               </div>
             </SheetContent>
           </Sheet> */}
+          <ThemeModeToggle />
         </div>
 
         {/** Large menu Navigation */}
-        <div className="hidden md:flex md:flex-row justify-end items-center gap-2 pr-6 w-auto md:w-[900px] h-[60px]">
+        <div className="hidden md:flex  md:flex-row justify-end items-center gap-2 w-auto md:w-[900px] h-[60px]">
+          <nav className="h-full w-full flex flex-row justify-end items-center">
+            <ThemeModeToggle />
+          </nav>
+
           {/* <span className="flex flex-row gap-2 items-center">
             <div className="side-menu-class flex flex-row gap-2 items-center justify-around">
               <Input
@@ -240,4 +251,4 @@ export const Header = () => {
       </div>
     </div>
   );
-};
+}
