@@ -10,7 +10,7 @@ import {
 
 export default function WhatisIncuvera() {
   return (
-    <div className="flex md:flex-col justify-center items-center min-h-180 md:min-h-screen bg-neutral-50 dark:bg-neutral-900  w-full ">
+    <div className="flex flex-col justify-center items-center min-h-180 md:min-h-screen bg-neutral-50 dark:bg-neutral-900  w-full ">
       {/* Mandate Section */}
       <section className="py-32 px-6 border-y border-neutral-100">
         <div className="max-w-4xl mx-auto text-center">
