@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useForm, Controller, UseFormReturn, FieldPath } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+// import { zodResolver } from '@hookform/resolvers/zod';
 import {
   User,
   Target,
@@ -21,7 +21,65 @@ import {
   Lightbulb,
   AlertCircle,
 } from 'lucide-react';
-import { FormData, INITIAL_DATA, StartupStage, FormSchema } from './types';
+// import { FormData, INITIAL_DATA, StartupStage, FormSchema } from './types';
+
+import { z } from 'zod';
+
+export type StartupStage =
+  | 'Idea'
+  | 'MVP'
+  | 'Early Traction'
+  | 'Scaling'
+  | 'Established';
+
+export const FormSchema = z.object({
+  // Personal Info
+  firstName: z.string().min(2, 'First name is required'),
+  lastName: z.string().min(2, 'Last name is required'),
+  email: z.string().email('Invalid email address'),
+  role: z.string().min(2, 'Role is required'),
+  linkedin: z.string().url('Invalid LinkedIn URL').or(z.string().length(0)),
+
+  // Startup Info
+  startupName: z.string().min(2, 'Startup name is required'),
+  industry: z.string().min(2, 'Industry is required'),
+  stage: z.enum(['Idea', 'MVP', 'Early Traction', 'Scaling', 'Established']),
+  teamSize: z.coerce.number().min(1, 'Team size must be at least 1'),
+  website: z.string().url('Invalid website URL').or(z.string().length(0)),
+
+  // Business Details
+  description: z.string().min(10, 'Description must be at least 10 characters'),
+  currentChallenges: z.string().min(10, 'Please describe your challenges'),
+  revenueModel: z.string().min(2, 'Revenue model is required'),
+
+  // Mentorship Goals
+  goals: z.string().min(10, 'Please describe your goals'),
+  preferredExpertise: z
+    .array(z.string())
+    .min(1, 'Select at least one area of expertise'),
+  commitmentLevel: z.string().min(2, 'Commitment level is required'),
+});
+
+export type FormData = z.infer<typeof FormSchema>;
+
+export const INITIAL_DATA: FormData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  role: '',
+  linkedin: '',
+  startupName: '',
+  industry: '',
+  stage: 'Idea',
+  teamSize: 1,
+  website: '',
+  description: '',
+  currentChallenges: '',
+  revenueModel: '',
+  goals: '',
+  preferredExpertise: [],
+  commitmentLevel: '',
+};
 
 const STORAGE_KEY = 'mentorship_application_draft';
 
@@ -31,7 +89,7 @@ export default function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm<any>({
-    resolver: zodResolver(FormSchema),
+    // resolver: zodResolver(FormSchema),
     defaultValues: INITIAL_DATA,
     mode: 'onChange',
   });
