@@ -14,7 +14,10 @@ export default function HeroModern() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className="max-w-5xl z-10"
       >
-        <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200 mb-8 leading-[1.05]">
+        <h1
+          data-cursor="contrast"
+          className="text-5xl md:text-8xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200 mb-8 leading-[1.05]"
+        >
           Where Ideas Become <br />
           <span className="text-green-500 italic font-serif">Structured</span>,
           Scalable Businesses.
@@ -27,7 +30,10 @@ export default function HeroModern() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="group relative px-10 py-5 flex flex-row bg-neutral-900 text-white rounded-2xl font-semibold text-lg hover:bg-neutral-800 transition-all shadow-2xl shadow-neutral-200 dark:shadow-neutral-950 overflow-hidden">
+          <button
+            data-cursor="contrast"
+            className="group  relative px-10 py-5 flex flex-row bg-neutral-900 text-white rounded-2xl font-semibold text-lg hover:bg-neutral-800 transition-all shadow-2xl shadow-neutral-200 dark:shadow-neutral-950 overflow-hidden data-[cursor=contrast]:overflow-hidden"
+          >
             <Link href={'/apply'} className=" cursor-pointer">
               <span className="relative z-10 flex items-center gap-2">
                 Apply for Incubation

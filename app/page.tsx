@@ -15,10 +15,12 @@ import Aboutustab from '@/components/hero/aboutustab';
 import Welcomescreen from '@/components/hero/welcomescreen';
 import InformationSlider from '@/components/hero/info-slider';
 import HeroModern from '@/components/hero/mordenhero';
+import CustomCursor from '@/components/custom-cursor';
 
 export default function Home() {
   return (
     <div className="h-auto relative">
+      <CustomCursor />
       <HeroModern />
       {/* <Welcomescreen /> */}
       <Whatisincuvera />

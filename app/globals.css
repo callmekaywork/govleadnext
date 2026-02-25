@@ -121,8 +121,15 @@
   }
 }
 
+/* In your global CSS file */
+html,
 body {
+  cursor: none;
   scroll-behavior: smooth;
+}
+
+[data-cursor='contrast'] {
+  overflow: hidden;
 }
 
 .hovertab {

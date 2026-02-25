@@ -35,8 +35,11 @@ export default function WhatisIncuvera() {
               governance, and network required to build sustainable businesses.
             </p>
 
-            <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-200 dark:border-neutral-900 shadow-sm text-left">
+            <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-8 data-[cursor=contrast]:overflow-hidden">
+              <div
+                data-cursor="contrast"
+                className="p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-200 dark:border-neutral-900 shadow-sm text-left"
+              >
                 <div className="w-12 h-12 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6">
                   <AlertCircle size={24} />
                 </div>
@@ -46,7 +49,10 @@ export default function WhatisIncuvera() {
                   success is a product of discipline, not just desire.
                 </p>
               </div>
-              <div className="p-8 bg-neutral-900 dark:bg-neutral-950 text-white rounded-3xl shadow-xl text-left">
+              <div
+                data-cursor="contrast"
+                className="p-8 bg-neutral-900 dark:bg-neutral-950 text-white rounded-3xl shadow-xl text-left"
+              >
                 <div className="w-12 h-12 bg-emerald-500 text-neutral-900 rounded-2xl flex items-center justify-center mb-6">
                   <CheckCircle2 size={24} />
                 </div>
@@ -120,10 +126,11 @@ function StepCard({
 }) {
   return (
     <motion.div
+      data-cursor="contrast"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-100 dark:border-neutral-900 hover:border-emerald-200 dark:hover:border-emerald-950 hover:shadow-2xl hover:shadow-emerald-100/50 transition-all group"
+      className="relative p-8 bg-white dark:bg-neutral-950 rounded-3xl border border-neutral-100 dark:border-neutral-900 hover:border-emerald-200 dark:hover:border-emerald-950  transition-all group"
     >
       <div className="absolute -top-6 left-8 text-6xl font-bold text-neutral-50 opacity-0 group-hover:opacity-100 dark:group-hover:border-emerald-950 transition-opacity font-serif italic">
         {number}
