@@ -17,8 +17,18 @@ import InformationSlider from '@/components/hero/info-slider';
 import HeroModern from '@/components/hero/mordenhero';
 import CustomCursor from '@/components/custom-cursor';
 import MinimalConcept from '@/components/hero/aboutustab';
+import React from 'react';
+
+import { useScrollTo } from '@/hooks/useScrollto';
 
 export default function Home() {
+  const scrollTo = useScrollTo();
+
+  const handleNavigate = (newPage: number) => {
+    // Scroll to top of container when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="h-auto relative">
       <CustomCursor />
@@ -27,16 +37,7 @@ export default function Home() {
       <Whatisincuvera />
       <MinimalConcept />
       <InformationSlider />
-      {/* <Packages /> */}
-      {/* <Aboutustab /> */}
-      {/*<Middle />
-      <br />
-      <Whocanapply />
-      <Image_1 />
-      <Proposition /> */}
-      {/* <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-20 gap-16 sm:p-20">
-        <main className="flex flex-col gap-[12px] row-start-2 items-center sm:items-start"></main>
-      </div> */}
+
       <Footer />
     </div>
   );

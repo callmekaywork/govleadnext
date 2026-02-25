@@ -10,26 +10,37 @@ import {
   Moon,
   ChevronRight,
   ChevronLeft,
+  Rocket,
+  ShieldCheck,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
 // Types
-type TabType = 'audit' | 'training' | 'coaching';
+type TabType =
+  | 'exposure'
+  | 'qualification'
+  | 'incubation'
+  | 'market-activation'
+  | 'governance';
 
 interface TabData {
   id: TabType;
   title: string;
+  stage: string;
   icon: React.ReactNode;
   description: string;
+  summary: string;
   features: string[];
   color: string;
 }
 
 const tabs: TabData[] = [
   {
-    id: 'audit',
+    id: 'exposure',
+    stage: 'Stage 1: Exposure',
     title: 'Business Audit',
     icon: <ClipboardCheck className="w-5 h-5" />,
+    summary: 'Events and ecosystem engagement.',
     description:
       'A comprehensive 360° evaluation of your current business processes, financial health, and market positioning.',
     features: [
@@ -37,21 +48,25 @@ const tabs: TabData[] = [
       'Financial Health Check',
       'Risk Assessment',
     ],
-    color: 'green', // We'll map these to our specific green/red colors
+    color: 'green',
   },
   {
-    id: 'training',
+    id: 'qualification',
+    stage: 'Stage 2: Qualification',
     title: 'Mentor Training',
     icon: <Users className="w-5 h-5" />,
+    summary: 'Diagnostic and viability assessment.',
     description:
       'Specialized programs designed to turn your senior leads into world-class mentors who drive team performance.',
     features: ['Leadership Frameworks', 'Feedback Cycles', 'EQ Development'],
     color: 'red',
   },
   {
-    id: 'coaching',
+    id: 'incubation',
+    stage: 'Stage 3: Incubation',
     title: 'Coaching',
     icon: <GraduationCap className="w-5 h-5" />,
+    summary: 'Structured transformation framework.',
     description:
       'One-on-one executive sessions focused on strategic growth, decision-making, and scaling operations.',
     features: [
@@ -61,10 +76,40 @@ const tabs: TabData[] = [
     ],
     color: 'green',
   },
+  {
+    id: 'market-activation',
+    stage: 'Stage 4: Market Activation',
+    title: 'Market Activation',
+    icon: <Rocket className="w-5 h-5" />, // placeholder icon
+    summary: 'Revenue acceleration and positioning.',
+    description:
+      'Focused strategies to accelerate revenue growth and establish strong market positioning.',
+    features: [
+      'Go-to-Market Strategy',
+      'Brand Positioning',
+      'Sales Enablement',
+    ],
+    color: 'blue',
+  },
+  {
+    id: 'governance',
+    stage: 'Stage 5: Governance',
+    title: 'Governance',
+    icon: <ShieldCheck className="w-5 h-5" />, // placeholder icon
+    summary: 'Long-term performance discipline.',
+    description:
+      'Frameworks and oversight mechanisms to ensure sustainable performance and compliance.',
+    features: [
+      'Performance Monitoring',
+      'Compliance Frameworks',
+      'Risk Control',
+    ],
+    color: 'purple',
+  },
 ];
 
 export default function InformationSlider() {
-  const [activeTab, setActiveTab] = useState<TabType>('audit');
+  const [activeTab, setActiveTab] = useState<TabType>('exposure');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   //   const [size, isSize] = useState(32);
@@ -74,11 +119,11 @@ export default function InformationSlider() {
 
   return (
     <div
-      className={`${isDarkMode ? 'dark' : ''} transition-colors duration-500`}
+      className={`${isDarkMode ? 'dark' : ''} transition-colors duration-500 dark:bg-neutral-900`}
     >
-      <div className="relative min-h-screen  bg-slate-50 dark:bg-neutral-900 flex items-center justify-center p-6 text-slate-900 dark:text-slate-100">
+      <div className="relative min-h-screen   flex items-center justify-center p-6 text-slate-900 dark:text-slate-100">
         {/* Main Card Container */}
-        <div className=" w-full  lg:max-w-360 bg-white dark:bg-neutral-900 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-zinc-800">
+        <div className=" w-full  lg:max-w-360 bg-white dark:bg-neutral-900 rounded-3xl  overflow-hidden ">
           {/* Header & Theme Toggle */}
           <div className="px-8 pt-8 pb-4 my-4 flex justify-between items-center lg:flex lg:justify-center">
             <h2 className="text-2xl lg:text-5xl font-bold tracking-tight">
@@ -251,10 +296,16 @@ export default function InformationSlider() {
                       <p className="text-slate-600 dark:text-zinc-400 leading-relaxed text-lg">
                         {tabs[activeIndex].description}
                       </p>
+                      <div className="flex flex-col gap-2 px-2 text-slate-600 bg-neutral-950 p-2 rounded-2xl dark:text-zinc-200 leading-relaxed text-lg border border-slate-100 dark:border-zinc-700/50">
+                        <p className="text-[15px] text-emerald-900 dark:text-emerald-300">
+                          Summary:
+                        </p>
+                        <p>{tabs[activeIndex].summary}</p>
+                      </div>
                     </div>
 
                     {/* Right Side: Features */}
-                    <div className="bg-slate-50 dark:bg-zinc-800/50 rounded-2xl p-6 border border-slate-100 dark:border-zinc-700/50">
+                    <div className="bg-slate-50 dark:bg-zinc-800/50 rounded-2xl flex flex-col justify-between md:h-full p-6 border border-slate-100 dark:border-zinc-700/50">
                       <h4 className="font-semibold mb-4 text-slate-500 uppercase tracking-wider text-xs">
                         What's Included
                       </h4>

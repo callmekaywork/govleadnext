@@ -65,37 +65,6 @@ export default function CustomCursor() {
       />
 
       {/* Large Outline */}
-      {/* <motion.div
-        // className="fixed top-0 left-0 w-10 h-10 border border-neutral-900 rounded-full pointer-events-none z-[9998] mix-blend-difference"
-        // style={{
-        //   x: cursorXSpring,
-        //   y: cursorYSpring,
-        //   translateX: '-50%',
-        //   translateY: '-50%',
-        // }}
-        // animate={{
-        //   scale: isHovering ? 1.5 : 1,
-        //   borderColor: isHovering ? '#fff' : '#000',
-        //   borderWidth: isHovering ? '1px' : '1px',
-        //   backgroundColor: isHovering
-        //     ? 'rgba(255, 255, 255, 0.1)'
-        //     : 'transparent',
-        // }}
-        className="fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9998] mix-blend-difference"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-        animate={{
-          scale: isHovering ? 3.5 : 1,
-          borderColor: isHovering ? '#fff' : '#000',
-          backgroundColor: isHovering
-            ? 'rgba(255, 255, 255, 1)'
-            : 'transparent',
-        }}
-      /> */}
       <motion.div
         className="fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9998] mix-blend-difference"
         style={{

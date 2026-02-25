@@ -12,7 +12,11 @@ import { useRef, useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function HeroModern() {
+// function HeroModern(
+//   { children }: { children?: React.ReactNode },
+//   ref: React.Ref<HTMLDivElement>,
+// ) {
+function HeroModern() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -152,3 +156,5 @@ export default function HeroModern() {
     </div>
   );
 }
+
+export default HeroModern;
