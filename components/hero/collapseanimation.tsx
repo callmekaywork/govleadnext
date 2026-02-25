@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { useRef, useState } from 'react';
-import { cn } from '@/src/lib/utils';
 
 const cards = [
   {
