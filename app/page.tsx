@@ -16,6 +16,7 @@ import Welcomescreen from '@/components/hero/welcomescreen';
 import InformationSlider from '@/components/hero/info-slider';
 import HeroModern from '@/components/hero/mordenhero';
 import CustomCursor from '@/components/custom-cursor';
+import MinimalConcept from '@/components/hero/aboutustab';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <HeroModern />
       {/* <Welcomescreen /> */}
       <Whatisincuvera />
+      <MinimalConcept />
       <InformationSlider />
       {/* <Packages /> */}
       {/* <Aboutustab /> */}
