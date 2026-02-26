@@ -3,6 +3,8 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header/header';
 import { ThemeProvider } from '@/components/theme-provider';
+import Footer from '@/components/footer/footer';
+import CustomCursor from '@/components/custom-cursor';
 
 const dmSans = DM_Sans({
   weight: ['400', '500'],
@@ -30,8 +32,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

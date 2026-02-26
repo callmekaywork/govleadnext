@@ -57,14 +57,14 @@ function HeroModern() {
       >
         <h1
           data-cursor="contrast"
-          className="text-5xl md:text-8xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200 mb-8 leading-[1.05] bg-neutral-900/80 md:bg-transparent p-5 rounded-2xl"
+          className="text-5xl md:text-8xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200 mb-8 leading-[1.05]  md:bg-transparent p-5 rounded-2xl"
         >
           Where Ideas Become <br />
           <span className="text-green-500 italic font-serif">Structured</span>,
           Scalable Businesses.
         </h1>
 
-        <p className="text-lg md:text-xl text-neutral-500 dark:text-neutral-200 mb-12 max-w-3xl mx-auto leading-relaxed font-light  bg-neutral-900/80 md:bg-transparent p-5 rounded-2xl">
+        <p className="text-lg md:text-xl text-neutral-500 dark:text-neutral-200 mb-12 max-w-3xl mx-auto leading-relaxed font-light md:bg-transparent p-5 rounded-2xl">
           IncuVera is a structured business incubation platform designed to
           transform early-stage ideas, professional expertise, and academic
           innovation into commercially viable enterprises.
@@ -95,7 +95,7 @@ function HeroModern() {
       {/* Floating Abstract Blocks */}
       <motion.div
         style={{ x: springX, y: springY }}
-        className="absolute top-20 right-[10%] w-64 h-64 rounded-[4rem] overflow-hidden rotate-12 shadow-2xl z-0 opacity-80 md:opacity-100"
+        className="hidden md:block absolute top-20 right-[10%] w-64 h-64 rounded-[4rem] overflow-hidden rotate-12 shadow-2xl z-0 opacity-80 md:opacity-100"
       >
         <img
           src="/img_3.jpeg"
@@ -110,7 +110,7 @@ function HeroModern() {
           x: useTransform(springX, v => v * -1.5),
           y: useTransform(springY, v => v * -1.5),
         }}
-        className="absolute bottom-20 left-[5%] w-80 h-96 rounded-[5rem] overflow-hidden -rotate-6 shadow-2xl z-0 opacity-60 md:opacity-100"
+        className="hidden md:block absolute bottom-20 left-[5%] w-80 h-96 rounded-[5rem] overflow-hidden -rotate-6 shadow-2xl z-0 opacity-60 md:opacity-100"
       >
         <img
           src="/img_2.jpeg"
@@ -125,7 +125,7 @@ function HeroModern() {
           y: useTransform(springY, v => v * -0.8),
           scale: useTransform(scrollYProgress, [0, 1], [0.8, 1.2]),
         }}
-        className="absolute top-1/2 right-[20%] w-40 h-40 rounded-full overflow-hidden shadow-xl z-0"
+        className="hidden md:block absolute top-1/2 right-[20%] w-40 h-40 rounded-full overflow-hidden shadow-xl z-0"
       >
         <img
           src="/img_1.jpeg"

@@ -1,7 +1,4 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -83,7 +80,7 @@ export const INITIAL_DATA: FormData = {
 
 const STORAGE_KEY = 'mentorship_application_draft';
 
-export default function App() {
+export default function ApplicationForm() {
   const [step, setStep] = useState(1);
   const [isSaved, setIsSaved] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
