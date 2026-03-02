@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 
 import { config } from 'dotenv';
 
-config({ path: '.env.local' });
+// config({ path: '.env.local' });
 
 const db = drizzle(`${process.env.DATABASE_URL!}`);
 
@@ -32,7 +32,7 @@ async function seedSuperAdmin() {
   }
 }
 
-seedSuperAdmin().catch((err) => {
+seedSuperAdmin().catch(err => {
   console.error('❌ Seeding failed:', err);
   process.exit(1);
 });
