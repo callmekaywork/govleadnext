@@ -10,7 +10,7 @@ import { router } from './route';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
-    ? ['https://staff-tracker-b8q5.vercel.app'] // your production domain
+    ? [process.env.VERCEL_URL] // your production domain
     : ['http://localhost:3000']; // dev
 
 const client = new RPCLink({
