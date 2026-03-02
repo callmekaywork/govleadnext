@@ -8,7 +8,7 @@ import { router } from '@/orpc/route';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
-    ? [`${process.env.VERCEL_URL}`] // your production domain
+    ? [`https://incuvera.vercel.app`] // your production domain
     : ['http://localhost:3000']; // dev
 
 const handler = new RPCHandler(router, {
