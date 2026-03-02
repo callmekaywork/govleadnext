@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack && drizzle-kit generate && drizzle-kit push",
+    "dev": "next dev --turbopack ",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
