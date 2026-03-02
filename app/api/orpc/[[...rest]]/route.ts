@@ -8,7 +8,7 @@ import { router } from '@/orpc/route';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
-    ? ['https://staff-tracker-b8q5.vercel.app'] // your production domain
+    ? [`${process.env.VERCEL_URL}`] // your production domain
     : ['http://localhost:3000']; // dev
 
 const handler = new RPCHandler(router, {
@@ -19,7 +19,7 @@ const handler = new RPCHandler(router, {
     }),
   ],
   interceptors: [
-    onError((error) => {
+    onError(error => {
       console.error(error);
     }),
   ],
