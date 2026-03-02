@@ -5,6 +5,8 @@ import MinimalConcept from '@/components/hero/aboutustab';
 import React from 'react';
 
 import { useScrollTo } from '@/hooks/useScrollto';
+import Header from '@/components/header/header';
+import Footer from '@/components/footer/footer';
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -16,11 +18,13 @@ export default function Home() {
 
   return (
     <div className="h-auto relative">
+      <Header />
       <HeroModern />
       {/* <Welcomescreen /> */}
       <Whatisincuvera />
       <MinimalConcept />
       <InformationSlider />
+      <Footer />
     </div>
   );
 }

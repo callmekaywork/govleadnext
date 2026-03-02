@@ -5,6 +5,7 @@ import Header from '@/components/header/header';
 import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/footer/footer';
 import CustomCursor from '@/components/custom-cursor';
+import { SessionProvider } from 'next-auth/react';
 
 const dmSans = DM_Sans({
   weight: ['400', '500'],
@@ -26,17 +27,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={` ${dmSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <CustomCursor />
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <CustomCursor />
+
+            {children}
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
