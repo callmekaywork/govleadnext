@@ -7,23 +7,11 @@ import { router } from './route';
 const handler = new RPCHandler(router, {
   plugins: [new CORSPlugin()],
   interceptors: [
-    onError((error) => {
+    onError(error => {
       console.error(error);
     }),
   ],
 });
-
-// const server = createServer(async (req, res) => {
-//   const result = await handler.handle(req, res, {
-//     prefix: '/api/orpc',
-//     context: { headers: req.headers },
-//   });
-
-//   if (!result.matched) {
-//     res.statusCode = 404;
-//     res.end('No procedure matched');
-//   }
-// });
 
 const server = createServer(async (req, res) => {
   const result = await handler.handle(req, res, {
@@ -40,5 +28,5 @@ const server = createServer(async (req, res) => {
 // , '127.0.0.1',
 
 server.listen(3000, '127.0.0.1', () =>
-  console.log('Listening on 127.0.0.1:3000')
+  console.log('Listening on 127.0.0.1:3000'),
 );
