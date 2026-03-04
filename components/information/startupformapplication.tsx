@@ -23,6 +23,7 @@ import {
 import { z } from 'zod';
 import { StartupFormSchema } from '@/db/validationschemas';
 import { orpc } from '@/orpc/client';
+import { redirect } from 'next/navigation';
 
 export type StartupStage =
   | 'Idea'
@@ -108,7 +109,7 @@ export default function StartupFormApplication() {
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
   const onSubmit = async (data: FormData) => {
-    console.log('Form Submitted:', data);
+    // console.log('Form Submitted:', data);
     // const startupSubmit = await orpc.applications.startup({
     //   firstName: data.firstName,
     //   lastName: data.lastName,
@@ -137,13 +138,12 @@ export default function StartupFormApplication() {
 
     // const startupSubmit = await orpc.applications.startup(data);
 
-    await orpc.applications.startup(data);
-    // if (startupSubmit) {
-    //   setIsSubmitted(true);
-    //   localStorage.removeItem(STORAGE_KEY);
-    // } else {
-    //   console.log('input validation');
-    // }
+    const startupSubmit = await orpc.applications.startup(data);
+
+    if (startupSubmit) {
+      setIsSubmitted(true);
+      localStorage.removeItem(STORAGE_KEY);
+    }
   };
 
   const getFieldsForStep = (currentStep: number): FieldPath<FormData>[] => {
@@ -181,7 +181,7 @@ export default function StartupFormApplication() {
             days.
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={() => redirect('/')}
             className="w-full py-4 bg-neutral-900 text-white rounded-2xl font-medium hover:bg-neutral-800 transition-colors"
           >
             Back to Home

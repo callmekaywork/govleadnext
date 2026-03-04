@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { db } from '@/db';
-import { accounts, users, userStatus } from '@/db/schema';
+import { accounts, person, users } from '@/db/schema';
 import type { IncomingHttpHeaders } from 'node:http';
 import { os } from '@orpc/server';
 
@@ -70,19 +70,6 @@ export const authCheckemail = os
 
     return getdata;
   });
-
-export const authIsOnline = os.handler(async () => {
-  const getdata = await db
-    .select({
-      userStatus, // all columns from userStatus
-      user: users, // all columns from users, aliased as "user"
-    })
-    .from(userStatus)
-    .innerJoin(users, eq(userStatus.userId, users.id)) // join condition
-    .where(eq(userStatus.isOnline, true));
-
-  return getdata;
-});
 
 // Reports
 
@@ -168,34 +155,6 @@ export const loginOutput = os
       redirect: false,
     });
 
-    if (checkSignIn) {
-      // console.log('Sign in was successfull lets update the last login');
-
-      const checkStatus = await db
-        .select()
-        .from(userStatus)
-        .where(eq(userStatus.userId, user.id))
-        .limit(1);
-
-      if (checkStatus.length > 0 && checkStatus[0].isOnline === false) {
-        await db
-          .update(userStatus)
-          .set({ isOnline: true })
-          .where(eq(userStatus.userId, user.id));
-      } else if (checkStatus.length > 0 && checkStatus[0].isOnline === true) {
-        await db
-          .update(userStatus)
-          .set({ isOnline: true })
-          .where(eq(userStatus.userId, user.id));
-      } else {
-        await db.insert(userStatus).values({
-          userId: user.id,
-          company_position: user.role,
-          loggedInAt: new Date(),
-          isOnline: true,
-        });
-      }
-    }
     // 3. Return user object
     return {
       id: user.id,
@@ -254,8 +213,51 @@ export const startupapplication = os
   .input(StartupFormSchema)
   .handler(async ({ input, context }) => {
     // insert data to the database
-    console.log('why is it a bad request');
-    console.log(input);
+    // check for person first
+    const checkPerson = await db
+      .select()
+      .from(person)
+      .where(eq(person.email, input.email));
+
+    if (checkPerson.length > 0) {
+      await db.insert(schema.startup).values({
+        personId: checkPerson[0].id,
+        startupName: input.startupName,
+        industry: input.industry,
+        stage: input.stage,
+        teamSize: input.teamSize,
+        website: input.website,
+        status: 'pending',
+      });
+
+      return { success: true };
+    } else {
+      const newPerson = await db
+        .insert(person)
+        .values({
+          firstName: input.firstName,
+          lastName: input.lastName,
+          email: input.email,
+          linkedin: input.linkedin,
+        })
+        .returning();
+
+      await db.insert(schema.startup).values({
+        personId: newPerson[0].id,
+        startupName: input.startupName,
+        industry: input.industry,
+        stage: input.stage,
+        teamSize: input.teamSize,
+        website: input.website,
+        status: 'pending',
+      });
+
+      return { success: true };
+    }
+
+    // console.log(input);
+
+    return { success: false };
   });
 
 // export const startupapplication = os
@@ -281,10 +283,6 @@ export const router = {
     signout: os
       .input(z.object({ id: z.string() }))
       .handler(async ({ input }) => {
-        await db
-          .update(userStatus)
-          .set({ isOnline: false })
-          .where(eq(userStatus.userId, input.id));
         signOut();
 
         // redirect('/');

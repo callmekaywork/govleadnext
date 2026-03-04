@@ -119,7 +119,7 @@ function HeroModern() {
           referrerPolicy="no-referrer"
         />
       </motion.div>
-      <motion.div
+      {/* <motion.div
         style={{
           x: useTransform(springX, v => v * 0.8),
           y: useTransform(springY, v => v * -0.8),
@@ -133,7 +133,7 @@ function HeroModern() {
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-      </motion.div>
+      </motion.div> */}
 
       {/* Decorative lines */}
       <div className="absolute inset-0 pointer-events-none">

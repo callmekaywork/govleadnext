@@ -51,7 +51,7 @@ export default function LoginPage() {
     try {
       await orpc.admin.auth(data);
       setIsLoading(false);
-      router.push('/admin/backend');
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

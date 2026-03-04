@@ -39,22 +39,6 @@ export const users = pgTable('users', {
   updatedAt: timestamp('updated_at'),
 });
 
-export const userStatus = pgTable('user_status', {
-  id: serial('id').primaryKey(),
-  userId: text('userId')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-
-  company_position: text('company_position'),
-  loggedInAt: timestamp('logged_in_at', { withTimezone: true })
-    .defaultNow()
-    .notNull(),
-  loggedOutAt: timestamp('logged_out_at', { withTimezone: true }),
-
-  // derived flag: true if loggedOutAt is null
-  isOnline: boolean('is_online').default(true).notNull(),
-});
-
 export const accounts = pgTable(
   'account',
   {
@@ -184,6 +168,10 @@ export const startup = pgTable('startup', {
   stage: varchar('stage', { length: 50 }).notNull(),
   teamSize: integer('team_size').notNull(),
   website: varchar('website', { length: 255 }),
+  status: text('status')
+    .$type<'pending' | 'accepted' | 'rejected'>()
+    .notNull()
+    .default('pending'),
 });
 
 export const corporate = pgTable('corporate', {
@@ -195,6 +183,10 @@ export const corporate = pgTable('corporate', {
   industry: varchar('industry', { length: 100 }).notNull(),
   size: integer('size').notNull(),
   website: varchar('website', { length: 255 }),
+  status: text('status')
+    .$type<'pending' | 'accepted' | 'rejected'>()
+    .notNull()
+    .default('pending'),
 });
 
 export const individual = pgTable('individual', {
@@ -204,4 +196,8 @@ export const individual = pgTable('individual', {
     .notNull(),
   occupation: varchar('occupation', { length: 100 }),
   skills: json('skills').$type<string[]>(),
+  status: text('status')
+    .$type<'pending' | 'accepted' | 'rejected'>()
+    .notNull()
+    .default('pending'),
 });
