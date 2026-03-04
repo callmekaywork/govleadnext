@@ -153,6 +153,8 @@ export default function Backend() {
 }
 
 function Dashboard() {
+  const { data: session } = useSession();
+
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<AppStatus | 'All'>('All');
@@ -194,12 +196,15 @@ function Dashboard() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Sidebar - Desktop */}
-      <aside className="hidden lg:flex w-64 bg-white border-r border-slate-200 flex-col p-6">
+      <aside className="hidden lg:flex w-64 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-slate-900 flex-col p-6">
         <div className="flex items-center gap-3 mb-10 px-2">
-          <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
-            <LayoutDashboard className="w-6 h-6" />
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white">
+            {/* <LayoutDashboard className="w-6 h-6" /> */}
+            <Image src={'/vercel.ico'} width={100} height={100} alt="logo" />
           </div>
-          <span className="font-bold text-xl tracking-tight">AppTrack</span>
+          <span className="font-bold text-xl tracking-tight">
+            Incuvera Dashboard
+          </span>
         </div>
 
         <nav className="flex-1 space-y-1">
@@ -226,31 +231,35 @@ function Dashboard() {
           </a>
         </nav>
 
-        <div className="mt-auto pt-6 border-t border-slate-100">
+        <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-600">
           <div className="flex items-center gap-3 px-2 mb-4">
             <div className="relative w-10 h-10">
-              {/* <Image
-                src={MOCK_USER.avatar}
-                alt={MOCK_USER.name}
+              <Image
+                src={'/vercel.ico'}
+                alt={`${session?.user.firstname}`}
                 fill
-                className="rounded-full border-2 border-slate-100 object-cover"
+                className="rounded-full border-2 border-slate-100 dark:border-slate-800 object-cover"
                 referrerPolicy="no-referrer"
-              /> */}
+              />
             </div>
             <div className="overflow-hidden">
-              <p className="text-sm font-semibold text-slate-900 truncate">
-                {MOCK_USER.name}
-              </p>
-              <p className="text-xs text-slate-500 truncate">
-                {MOCK_USER.email}
-              </p>
+              {session?.user !== null && (
+                <>
+                  <p className="text-sm font-semibold text-slate-900 truncate">
+                    {session?.user.firstname}
+                  </p>
+                  <p className="text-xs text-slate-500 truncate">
+                    {session?.user.email}
+                  </p>
+                </>
+              )}
             </div>
           </div>
           <button
             onClick={() => router.push('/login')}
             className="w-full flex items-center gap-3 px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors font-medium"
           >
-            <LogOut className="w-5 h-5" />
+            <LogOut className="w-6 h-6 dark:text-white" />
             Sign Out
           </button>
         </div>
@@ -264,7 +273,7 @@ function Dashboard() {
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
               <LayoutDashboard className="w-5 h-5" />
             </div>
-            <span className="font-bold text-lg">AppTrack</span>
+            <span className="font-bold text-lg">Incuvera</span>
           </div>
           <div className="relative w-8 h-8">
             {/* <Image
@@ -282,9 +291,9 @@ function Dashboard() {
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-3xl font-bold text-slate-900 mb-2"
+            className="text-3xl font-bold text-slate-900 dark:text-slate-300 mb-2"
           >
-            Welcome back, {MOCK_USER.name.split(' ')[0]}!
+            Welcome back, {session?.user.firstname}!
           </motion.h1>
           <p className="text-slate-500">
             Here&apos;s what&apos;s happening with your job applications today.
@@ -330,9 +339,9 @@ function Dashboard() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
-            className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 xl:col-span-1"
+            className="bg-white dark:bg-neutral-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-neutral-800 xl:col-span-1"
           >
-            <h3 className="text-lg font-bold text-slate-900 mb-6">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-slate-300 mb-6">
               Status Distribution
             </h3>
             <div className="h-64 w-full">
@@ -393,7 +402,7 @@ function Dashboard() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
-            className="bg-white rounded-2xl shadow-sm border border-slate-100 xl:col-span-2 overflow-hidden flex flex-col"
+            className="bg-white dark:bg-neutral-800 rounded-2xl shadow-sm border border-slate-100 dark:border-neutral-800 xl:col-span-2 overflow-hidden flex flex-col"
           >
             <div className="p-6 border-bottom border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <h3 className="text-lg font-bold text-slate-900">

@@ -22,6 +22,7 @@ import {
 
 import { z } from 'zod';
 import { StartupFormSchema } from '@/db/validationschemas';
+import { orpc } from '@/orpc/client';
 
 export type StartupStage =
   | 'Idea'
@@ -53,10 +54,12 @@ export const INITIAL_DATA: FormData = {
 
 const STORAGE_KEY = 'mentorship_application_draft';
 
-export default function ApplicationForm() {
+export default function StartupFormApplication() {
   const [step, setStep] = useState(1);
   const [isSaved, setIsSaved] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [isReviewed, setReviewed] = useState(false);
 
   const form = useForm<any>({
     // resolver: zodResolver(FormSchema),
@@ -104,10 +107,43 @@ export default function ApplicationForm() {
 
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log('Form Submitted:', data);
-    setIsSubmitted(true);
-    localStorage.removeItem(STORAGE_KEY);
+    // const startupSubmit = await orpc.applications.startup({
+    //   firstName: data.firstName,
+    //   lastName: data.lastName,
+    //   email: data.email,
+    //   role: data.role,
+    //   linkedin: data.linkedin,
+    // });
+
+    // // Startup Info
+    // startupName: data.startupName,
+    // industry: data.industry,
+    // stage: data.stage,
+    // teamSize: data.teamSize,
+    // website: data.website,
+
+    // // Business Details
+    // description: data.description,
+    // currentChallenges: data.currentChallenges,
+    // revenueModel: data.revenueModel,
+
+    // // Mentorship Goals
+    // goals: data.goals,
+    // preferredExpertise: data.preferredExpertise,
+    // commitmentLevel: data.commitmentLevel,
+    // });
+
+    // const startupSubmit = await orpc.applications.startup(data);
+
+    await orpc.applications.startup(data);
+    // if (startupSubmit) {
+    //   setIsSubmitted(true);
+    //   localStorage.removeItem(STORAGE_KEY);
+    // } else {
+    //   console.log('input validation');
+    // }
   };
 
   const getFieldsForStep = (currentStep: number): FieldPath<FormData>[] => {
@@ -266,13 +302,27 @@ export default function ApplicationForm() {
                 Continue <ChevronRight size={20} />
               </button>
             ) : (
-              <button
-                type="submit"
-                disabled={!isValid}
-                className={`flex items-center gap-2 px-8 py-3 text-white rounded-xl font-medium transition-all shadow-sm ${isValid ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-neutral-300 cursor-not-allowed'}`}
-              >
-                Submit Application <CheckCircle2 size={20} />
-              </button>
+              <>
+                {isReviewed ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid}
+                    className={`flex items-center gap-2 px-8 py-3 text-white rounded-xl font-medium transition-all shadow-sm ${isValid ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-neutral-300 cursor-not-allowed'}`}
+                  >
+                    Submit Application <CheckCircle2 size={20} />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setReviewed(true);
+                    }}
+                    className={`flex items-center gap-2 px-8 py-3 text-white rounded-xl font-medium transition-all shadow-sm ${isValid ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-neutral-300 cursor-not-allowed'}`}
+                  >
+                    Yes i accept
+                  </button>
+                )}
+              </>
             )}
           </footer>
         </form>

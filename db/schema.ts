@@ -128,33 +128,80 @@ export const authenticators = pgTable(
   ],
 );
 
-export const startup = pgTable('startup', {
+export const application = pgTable('application', {
   id: serial('id').primaryKey(),
+  ownerId: integer('owner_id').notNull(),
+  ownerType: text('owner_type').notNull(), // 'startup' | 'corporate' | 'individual'
+});
 
-  // Personal Info
+// export const startup = pgTable('startup', {
+//   id: serial('id').primaryKey(),
+
+//   // Personal Info
+//   firstName: varchar('first_name', { length: 100 }).notNull(),
+//   lastName: varchar('last_name', { length: 100 }).notNull(),
+//   email: varchar('email', { length: 255 }).notNull().unique(),
+//   role: varchar('role', { length: 100 }).notNull(),
+//   linkedin: varchar('linkedin', { length: 255 }), // optional
+
+//   // Startup Info
+//   startupName: varchar('startup_name', { length: 150 }).notNull(),
+//   industry: varchar('industry', { length: 100 }).notNull(),
+//   stage: varchar('stage', { length: 50 }).notNull(), // enum in Zod, string in DB
+//   teamSize: integer('team_size').notNull(),
+//   website: varchar('website', { length: 255 }), // optional
+
+//   // Business Details
+//   description: text('description').notNull(),
+//   currentChallenges: text('current_challenges').notNull(),
+//   revenueModel: varchar('revenue_model', { length: 100 }).notNull(),
+
+//   // Mentorship Goals
+//   goals: text('goals').notNull(),
+//   preferredExpertise: json('preferred_expertise').$type<string[]>().notNull(),
+//   commitmentLevel: varchar('commitment_level', { length: 100 }).notNull(),
+
+//   // Metadata
+//   createdAt: timestamp('created_at').defaultNow().notNull(),
+// });
+
+export const person = pgTable('person', {
+  id: serial('id').primaryKey(),
   firstName: varchar('first_name', { length: 100 }).notNull(),
   lastName: varchar('last_name', { length: 100 }).notNull(),
   email: varchar('email', { length: 255 }).notNull().unique(),
-  role: varchar('role', { length: 100 }).notNull(),
-  linkedin: varchar('linkedin', { length: 255 }), // optional
+  linkedin: varchar('linkedin', { length: 255 }),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
 
-  // Startup Info
+export const startup = pgTable('startup', {
+  id: serial('id').primaryKey(),
+  personId: integer('person_id')
+    .references(() => person.id)
+    .notNull(),
   startupName: varchar('startup_name', { length: 150 }).notNull(),
   industry: varchar('industry', { length: 100 }).notNull(),
-  stage: varchar('stage', { length: 50 }).notNull(), // enum in Zod, string in DB
+  stage: varchar('stage', { length: 50 }).notNull(),
   teamSize: integer('team_size').notNull(),
-  website: varchar('website', { length: 255 }), // optional
+  website: varchar('website', { length: 255 }),
+});
 
-  // Business Details
-  description: text('description').notNull(),
-  currentChallenges: text('current_challenges').notNull(),
-  revenueModel: varchar('revenue_model', { length: 100 }).notNull(),
+export const corporate = pgTable('corporate', {
+  id: serial('id').primaryKey(),
+  personId: integer('person_id')
+    .references(() => person.id)
+    .notNull(),
+  companyName: varchar('company_name', { length: 150 }).notNull(),
+  industry: varchar('industry', { length: 100 }).notNull(),
+  size: integer('size').notNull(),
+  website: varchar('website', { length: 255 }),
+});
 
-  // Mentorship Goals
-  goals: text('goals').notNull(),
-  preferredExpertise: json('preferred_expertise').$type<string[]>().notNull(),
-  commitmentLevel: varchar('commitment_level', { length: 100 }).notNull(),
-
-  // Metadata
-  createdAt: timestamp('created_at').defaultNow().notNull(),
+export const individual = pgTable('individual', {
+  id: serial('id').primaryKey(),
+  personId: integer('person_id')
+    .references(() => person.id)
+    .notNull(),
+  occupation: varchar('occupation', { length: 100 }),
+  skills: json('skills').$type<string[]>(),
 });

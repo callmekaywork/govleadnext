@@ -51,7 +51,7 @@ export default function CustomCursor() {
     <>
       {/* Small Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-neutral-900 rounded-full pointer-events-none z-[9999] "
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-neutral-900 dark:bg-white/50 rounded-full pointer-events-none z-[9999] "
         style={{
           x: cursorX,
           y: cursorY,
@@ -66,7 +66,7 @@ export default function CustomCursor() {
 
       {/* Large Outline */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        className="fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9998] border-white dark:bg-white/50 mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -78,7 +78,7 @@ export default function CustomCursor() {
           borderColor: isHovering ? '#fff' : '#000', // contrast border
           backgroundColor: isHovering
             ? 'rgba(255, 255, 255, )' // visible background when hovering
-            : 'rgba(0,0,0,0)', // keep transparent but still visible outline
+            : 'rgba(255, 255, 255,0.2)', // keep transparent but still visible outline
         }}
         transition={{ type: 'spring', stiffness: 250, damping: 25 }}
       />

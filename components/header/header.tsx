@@ -45,7 +45,7 @@ export default function Header() {
   // const router = useRouter();
 
   return (
-    <div className="fixed z-30 w-full h-20 md:h-30 flex flex-col items-center bg-white dark:bg-neutral-900">
+    <div className=" z-30 w-full h-20 md:h-30 flex flex-col items-center bg-white dark:bg-neutral-900">
       <div className="flex flex-row justify-center items-center text-[10px] h-[20px] bg-white dark:bg-neutral-900 w-full text-white">
         {/* <span className="mx-2">reach IncuVera Management Here: </span>
         <Link href={'pearltyobela@gmail.com'} className="text-white">

@@ -11,6 +11,11 @@ import * as schema from '@/db/schema';
 
 import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
+import {
+  personSchema,
+  StartupFormSchema,
+  startupSchema,
+} from '@/db/validationschemas';
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -242,6 +247,34 @@ export const loginOutput = os
 //   };
 // });
 
+// const AuthSchema = z.union([personSchema, startupSchema]);
+
+export const startupapplication = os
+  .$context<{ headers: IncomingHttpHeaders }>()
+  .input(StartupFormSchema)
+  .handler(async ({ input, context }) => {
+    // insert data to the database
+    console.log('why is it a bad request');
+    console.log(input);
+  });
+
+// export const startupapplication = os
+//   .$context<{ headers: IncomingHttpHeaders }>()
+//   .input(
+//     z.object({
+//       firstName: z.string().min(2, 'First name is required'),
+//       lastName: z.string().min(2, 'Last name is required'),
+//       email: z.email('Invalid email address'),
+//       role: z.string().min(2, 'Role is required'),
+//       linkedin: z.string('Invalid LinkedIn URL').optional(),
+//     }),
+//   )
+//   .handler(async ({ input, context }) => {
+//     // insert data to the database
+//     console.log('why is it a bad request');
+//     console.log(input);
+//   });
+
 export const router = {
   admin: {
     auth: loginOutput,
@@ -256,6 +289,9 @@ export const router = {
 
         // redirect('/');
       }),
+  },
+  applications: {
+    startup: startupapplication,
   },
 
   // server/auth.ts
