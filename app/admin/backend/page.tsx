@@ -213,26 +213,44 @@ function Dashboard() {
     }
 
     getData();
+
+    // console.log(applications);
   }, []);
 
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<AppStatus | 'All'>('All');
 
+  // const stats = useMemo(() => {
+  //   const total = MOCK_APPLICATIONS.length;
+  //   const accepted = MOCK_APPLICATIONS.filter(
+  //     a => a.status === 'Accepted',
+  //   ).length;
+  //   const rejected = MOCK_APPLICATIONS.filter(
+  //     a => a.status === 'Rejected',
+  //   ).length;
+  //   const pending = MOCK_APPLICATIONS.filter(
+  //     a => a.status === 'Pending',
+  //   ).length;
+  //   return { total, accepted, rejected, pending };
+  // }, []);
+
   const stats = useMemo(() => {
-    const total = MOCK_APPLICATIONS.length;
-    const accepted = MOCK_APPLICATIONS.filter(
-      a => a.status === 'Accepted',
+    const total = applications.length; // startup applications
+    const accepted = applications.filter(
+      a => a.startup?.status === 'accepted',
     ).length;
-    const rejected = MOCK_APPLICATIONS.filter(
-      a => a.status === 'Rejected',
+    const rejected = applications.filter(
+      a => a.startup?.status === 'rejected',
     ).length;
-    const pending = MOCK_APPLICATIONS.filter(
-      a => a.status === 'Pending',
+    const pending = applications.filter(
+      a => a.startup?.status === 'pending',
     ).length;
+
     return { total, accepted, rejected, pending };
   }, []);
 
+  // the chart
   const chartData = useMemo(
     () => [
       { name: 'Accepted', value: stats.accepted },
@@ -243,13 +261,16 @@ function Dashboard() {
   );
 
   const filteredApps = useMemo(() => {
-    return MOCK_APPLICATIONS.filter(app => {
+    return applications.filter(app => {
       const matchesSearch =
-        app.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        app.role.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesStatus =
-        statusFilter === 'All' || app.status === statusFilter;
-      return matchesSearch && matchesStatus;
+        app.startup?.startupName
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        app.startup?.industry.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // const matchesStatus =
+      //   statusFilter === 'pending' || app.startup.status === statusFilter;
+      // return matchesSearch && matchesStatus;
     });
   }, [searchQuery, statusFilter]);
 
@@ -447,9 +468,11 @@ function Dashboard() {
                           COLORS[item.name as keyof typeof COLORS],
                       }}
                     />
-                    <span className="text-slate-600">{item.name}</span>
+                    <span className="text-slate-600 dark:text-slate-100">
+                      {item.name}
+                    </span>
                   </div>
-                  <span className="font-semibold text-slate-900">
+                  <span className="font-semibold text-slate-900 dark:text-slate-100">
                     {item.value}
                   </span>
                 </div>
@@ -476,13 +499,13 @@ function Dashboard() {
                     placeholder="Search..."
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
-                    className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all w-full sm:w-48"
+                    className="pl-9 pr-4 py-2 bg-slate-50 dark:text-slate-900 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all w-full sm:w-48"
                   />
                 </div>
                 <select
                   value={statusFilter}
                   onChange={e => setStatusFilter(e.target.value as any)}
-                  className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="px-3 py-2 bg-slate-50 border dark:text-slate-900 border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                 >
                   <option value="All">All Status</option>
                   <option value="Accepted">Accepted</option>
@@ -496,22 +519,22 @@ function Dashboard() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-50/50">
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100">
                       Company
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100">
                       Role
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100">
                       Date
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100">
                       Status
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    {/* <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100">
                       Salary
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider"></th>
+                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-100"></th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -522,52 +545,55 @@ function Dashboard() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        key={app.id}
+                        key={app.startup?.id}
                         className="hover:bg-slate-50/50 transition-colors group"
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-xs">
-                              {app.company.charAt(0)}
+                              {app.startup?.startupName.charAt(0)}
                             </div>
                             <div>
                               <p className="font-semibold text-slate-900">
-                                {app.company}
+                                {app.startup?.startupName}
                               </p>
                               <p className="text-xs text-slate-500">
-                                {app.location}
+                                {app.startup?.stage}
                               </p>
                             </div>
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <p className="text-sm font-medium text-slate-700">
-                            {app.role}
+                            {/* {app.role} */}
                           </p>
                         </td>
                         <td className="px-6 py-4">
-                          <p className="text-sm text-slate-500">
-                            {format(new Date(app.date), 'MMM dd, yyyy')}
-                          </p>
+                          {/* <p className="text-sm text-slate-500">
+                            {format(
+                              new Date(app.startup?.),
+                              'MMM dd, yyyy',
+                            )}
+                          </p> */}
                         </td>
                         <td className="px-6 py-4">
                           <span
                             className={cn(
                               'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
-                              app.status === 'Accepted' &&
+                              app.startup?.status === 'accepted' &&
                                 'bg-emerald-100 text-emerald-700',
-                              app.status === 'Rejected' &&
+                              app.startup?.status === 'rejected' &&
                                 'bg-red-100 text-red-700',
-                              app.status === 'Pending' &&
+                              app.startup?.status === 'pending' &&
                                 'bg-amber-100 text-amber-700',
                             )}
                           >
-                            {app.status}
+                            {app.startup?.status}
                           </span>
                         </td>
                         <td className="px-6 py-4">
                           <p className="text-sm font-semibold text-slate-900">
-                            {app.salary}
+                            {/* {app.salary} */}
                           </p>
                         </td>
                         <td className="px-6 py-4 text-right">
