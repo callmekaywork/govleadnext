@@ -1,6 +1,13 @@
 import { z } from 'zod';
 import { db } from '@/db';
-import { accounts, person, users } from '@/db/schema';
+import {
+  accounts,
+  corporate,
+  individual,
+  person,
+  startup,
+  users,
+} from '@/db/schema';
 import type { IncomingHttpHeaders } from 'node:http';
 import { os } from '@orpc/server';
 
@@ -260,6 +267,17 @@ export const startupapplication = os
     return { success: false };
   });
 
+export const getActiveApplications = os.handler(async () => {
+  const data = await db
+    .select()
+    .from(person)
+    .leftJoin(startup, eq(startup.personId, person.id))
+    .leftJoin(corporate, eq(corporate.personId, person.id))
+    .leftJoin(individual, eq(individual.personId, person.id));
+
+  return data;
+});
+
 // export const startupapplication = os
 //   .$context<{ headers: IncomingHttpHeaders }>()
 //   .input(
@@ -290,6 +308,9 @@ export const router = {
   },
   applications: {
     startup: startupapplication,
+  },
+  select: {
+    response: getActiveApplications,
   },
 
   // server/auth.ts

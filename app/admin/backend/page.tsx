@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
@@ -37,6 +37,7 @@ import Loading from '@/app/loading';
 import LoginPage from '@/components/admin/loginpage';
 import { useSession } from 'next-auth/react';
 import { StatCard } from '@/components/admin/statcard';
+import { orpc } from '@/orpc/client';
 
 // --- Utility ---
 function cn(...inputs: ClassValue[]) {
@@ -62,6 +63,51 @@ interface Application {
   location: string;
   salary: string;
 }
+
+type PersonType = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  linkedin: string | null;
+  createdAt: Date;
+};
+
+type StartupType = {
+  id: number;
+  personId: number;
+  startupName: string;
+  industry: string;
+  stage: string;
+  teamSize: number;
+  website: string | null;
+  status: 'pending' | 'accepted' | 'rejected';
+};
+
+type CorporateType = {
+  id: number;
+  personId: number;
+  companyName: string;
+  industry: string;
+  size: number;
+  website: string | null;
+  status: 'pending' | 'accepted' | 'rejected';
+};
+
+type IndividualType = {
+  id: number;
+  personId: number;
+  occupation: string | null;
+  skills: string[] | null;
+  status: 'pending' | 'accepted' | 'rejected';
+};
+
+type ApplicationData = {
+  person: PersonType;
+  startup: StartupType | null;
+  corporate: CorporateType | null;
+  individual: IndividualType | null;
+};
 
 const MOCK_APPLICATIONS: Application[] = [
   {
@@ -153,7 +199,21 @@ export default function Backend() {
 }
 
 function Dashboard() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  const [applications, setApplications] = useState<ApplicationData[]>([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await orpc.select.response();
+
+      setApplications(res);
+
+      console.log(res);
+    }
+
+    getData();
+  }, []);
 
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
@@ -232,31 +292,29 @@ function Dashboard() {
         </nav>
 
         <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-600">
-          <div className="flex items-center gap-3 px-2 mb-4">
-            <div className="relative w-10 h-10">
-              <Image
-                src={'/vercel.ico'}
-                alt={`${session?.user.firstname}`}
-                fill
-                className="rounded-full border-2 border-slate-100 dark:border-slate-800 object-cover"
-                referrerPolicy="no-referrer"
-              />
+          {status === 'authenticated' && (
+            <div className="flex items-center gap-3 px-2 mb-4">
+              <div className="relative w-10 h-10">
+                <Image
+                  src={'/vercel.ico'}
+                  alt={`${session.user.firstname}`}
+                  fill
+                  className="rounded-full border-2 border-slate-100 dark:border-slate-800 object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <p className="text-sm font-semibold text-slate-900 truncate">
+                  {session.user.firstname}
+                </p>
+                <p className="text-xs text-slate-500 truncate">
+                  {session?.user.email}
+                </p>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              {session?.user !== null && (
-                <>
-                  <p className="text-sm font-semibold text-slate-900 truncate">
-                    {session?.user.firstname}
-                  </p>
-                  <p className="text-xs text-slate-500 truncate">
-                    {session?.user.email}
-                  </p>
-                </>
-              )}
-            </div>
-          </div>
+          )}
           <button
-            onClick={() => router.push('/login')}
+            onClick={() => router.push('/admin/backend')}
             className="w-full flex items-center gap-3 px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors font-medium"
           >
             <LogOut className="w-6 h-6 dark:text-white" />
@@ -288,13 +346,15 @@ function Dashboard() {
 
         {/* Welcome Section */}
         <div className="mb-8">
-          <motion.h1
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-3xl font-bold text-slate-900 dark:text-slate-300 mb-2"
-          >
-            Welcome back, {session?.user.firstname}!
-          </motion.h1>
+          {status == 'authenticated' && (
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-3xl font-bold text-slate-900 dark:text-slate-300 mb-2"
+            >
+              Welcome back, {session.user.name}!
+            </motion.h1>
+          )}
           <p className="text-slate-500">
             Here&apos;s what&apos;s happening with your job applications today.
           </p>
