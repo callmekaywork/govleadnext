@@ -33,15 +33,21 @@ export default function IdeaOne() {
         </div>
         <div className="mt-5 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl">
           {/* What We Do */}
-          <div className="relative bg-white p-12 lg:p-20 flex flex-col justify-between min-h-[500px]">
+          <div className="relative bg-white dark:bg-gray-300 p-12 lg:p-20 flex flex-col justify-between min-h-[500px]">
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-wider mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-gray-300 text-emerald-600 text-xs font-bold uppercase tracking-wider mb-8">
                 <Check className="w-3 h-3" /> What We Do
               </div>
               <h4 className="text-5xl font-bold tracking-tighter mb-6 leading-none">
-                We build <br />
-                <span className="text-emerald-500">Future-Proof</span> <br />
-                Digital Products.
+                <span className="text-black dark:text-black">We build</span>
+                <br />
+                <span className="text-emerald-500 dark:text-emerald-700">
+                  Future-Proof
+                </span>{' '}
+                <br />
+                <span className="text-black dark:text-black">
+                  Digital Products.
+                </span>
               </h4>
               <ul className="space-y-4 text-zinc-600">
                 <li className="flex items-center gap-3">
