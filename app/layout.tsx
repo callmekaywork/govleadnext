@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/footer/footer';
 import CustomCursor from '@/components/custom-cursor';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from '@/components/ui/sonner';
 
 const dmSans = DM_Sans({
   weight: ['400', '500'],
@@ -37,6 +38,7 @@ export default function RootLayout({
             <CustomCursor />
 
             {children}
+            <Toaster />
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -7,6 +7,7 @@ import React from 'react';
 import { useScrollTo } from '@/hooks/useScrollto';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
+import IdeaOne from '@/components/hero/ideaone';
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -21,7 +22,7 @@ export default function Home() {
       <Header />
       <HeroModern />
       {/* <Welcomescreen /> */}
-      <Whatisincuvera />
+      <IdeaOne />
       <MinimalConcept />
       <InformationSlider />
       <Footer />

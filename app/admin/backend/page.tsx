@@ -16,6 +16,8 @@ import {
   Bell,
   ArrowUpRight,
   Briefcase,
+  Theater,
+  Lightbulb,
 } from 'lucide-react';
 import {
   PieChart,
@@ -38,6 +40,8 @@ import LoginPage from '@/components/admin/loginpage';
 import { useSession } from 'next-auth/react';
 import { StatCard } from '@/components/admin/statcard';
 import { orpc } from '@/orpc/client';
+import { ThemeModeToggle } from '@/components/theme-button';
+import Link from 'next/link';
 
 // --- Utility ---
 function cn(...inputs: ClassValue[]) {
@@ -278,15 +282,15 @@ function Dashboard() {
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Sidebar - Desktop */}
       <aside className="hidden lg:flex w-64 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-slate-900 flex-col p-6">
-        <div className="flex items-center gap-3 mb-10 px-2">
+        <Link href={'/'} className="flex items-center gap-3 mb-10 px-2">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white">
             {/* <LayoutDashboard className="w-6 h-6" /> */}
-            <Image src={'/vercel.ico'} width={100} height={100} alt="logo" />
+            <Image src={'/vercel.ico'} width={100} height={100} alt="logo" />I
           </div>
           <span className="font-bold text-xl tracking-tight">
             Incuvera Dashboard
           </span>
-        </div>
+        </Link>
 
         <nav className="flex-1 space-y-1">
           <a
@@ -310,6 +314,12 @@ function Dashboard() {
             <Bell className="w-5 h-5" />
             Notifications
           </a>
+          <div className="flex flex-row h-15 gap-2 items-center justify-between">
+            <p className="flex flex-row h-full items-center gap-2">
+              <Lightbulb size={15} /> Toggle Theme
+            </p>
+            <ThemeModeToggle />
+          </div>
         </nav>
 
         <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-600">
