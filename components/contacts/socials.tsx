@@ -43,9 +43,9 @@ export default function Socials() {
     //   description: 'Latest updates',
     // },
     {
-      name: 'LinkedIn',
+      name: 'Facebook',
       icon: MessageSquareQuote,
-      url: '#',
+      url: 'https://www.facebook.com/share/1AQohmS88w/',
       color: 'hover:bg-blue-700 hover:text-white',
       description: 'Professional network',
     },
