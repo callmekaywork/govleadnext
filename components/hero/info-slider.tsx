@@ -296,7 +296,7 @@ export default function InformationSlider() {
                       <p className="text-slate-600 dark:text-zinc-400 leading-relaxed text-lg">
                         {tabs[activeIndex].description}
                       </p>
-                      <div className="flex flex-col gap-2 px-2 text-slate-600 bg-neutral-950 p-2 rounded-2xl dark:text-zinc-200 leading-relaxed text-lg border border-slate-100 dark:border-zinc-700/50">
+                      <div className="flex flex-col gap-2 px-2 text-slate-600 bg-neutral-100 inset-shadow-2xs inset-3.5 p-2 rounded-2xl dark:text-zinc-200 leading-relaxed text-lg border border-slate-100 dark:border-zinc-700/50">
                         <p className="text-[15px] text-emerald-900 dark:text-emerald-300">
                           Summary:
                         </p>

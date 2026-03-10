@@ -56,7 +56,7 @@ const TestimonialsList = () => {
       name: 'Kabelo Mbona',
       role: 'Baker',
       content:
-        'TrustHub transformed how we handle customer feedback. Our conversion rate jumped by 15% in the first month of using their testimonial widgets.',
+        'Incuvera transformed how we handle customer feedback. Our conversion rate jumped by 15% in the first month of using their testimonial widgets.',
       rating: 5,
       image: '/img_2.jpeg',
     },
@@ -72,7 +72,7 @@ const TestimonialsList = () => {
       name: 'Lebohang Maroba',
       role: 'Owns a spaza-shop',
       content:
-        'Authenticity is key for us. TrustHub makes it easy to verify and display real reviews that our customers actually trust.',
+        'Authenticity is key for us. Incuvera makes it easy to connect with our clients with their great service.',
       rating: 4,
       image: '/img_1.jpeg',
     },
