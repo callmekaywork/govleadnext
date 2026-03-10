@@ -8,6 +8,7 @@ import { useScrollTo } from '@/hooks/useScrollto';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import IdeaOne from '@/components/hero/ideaone';
+import Testimonials from '@/components/contacts/testimonials';
 
 export default function Home() {
   const scrollTo = useScrollTo();
@@ -25,6 +26,7 @@ export default function Home() {
       <IdeaOne />
       <MinimalConcept />
       <InformationSlider />
+      <Testimonials />
       <Footer />
     </div>
   );

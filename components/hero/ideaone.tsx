@@ -43,7 +43,7 @@ export default function IdeaOne() {
                 <br />
                 <span className="text-emerald-500 dark:text-emerald-700">
                   Future-Proof
-                </span>{' '}
+                </span>
                 <br />
                 <span className="text-black dark:text-black">
                   Digital Products.
