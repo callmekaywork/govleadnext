@@ -54,7 +54,7 @@ export default function Socials() {
   return (
     <section
       id="socials"
-      className="py-24 bg-stone-50 flex justify-center items-center"
+      className="py-24 bg-stone-50 dark:bg-neutral-900 flex justify-center items-center"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -71,7 +71,7 @@ export default function Socials() {
               key={social.name}
               //   whileHover={{ scale: 1.02 }}
               //   whileTap={{ scale: 0.98 }}
-              className={`flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200 transition-all ${social.color}`}
+              className={`flex flex-col items-center rounded-2xl bg-white dark:bg-neutral-800  p-8 shadow-sm ring-1 ring-stone-200 dark:ring-stone-900 transition-all ${social.color}`}
             >
               <Link href={social.url} target="_blank" rel="noopener noreferrer">
                 <social.icon size={32} className="mb-4" />
