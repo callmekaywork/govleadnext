@@ -201,3 +201,84 @@ export const individual = pgTable('individual', {
     .notNull()
     .default('pending'),
 });
+
+// Blog posts
+export const posts = pgTable('posts', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  authorId: uuid('author_id')
+    .references(() => users.id)
+    .notNull(),
+  title: varchar('title', { length: 200 }).notNull(),
+  slug: varchar('slug', { length: 200 }).notNull().unique(),
+  content: text('content').notNull(),
+  excerpt: text('excerpt'),
+  coverImageUrl: varchar('cover_image_url', { length: 255 }),
+  published: boolean('published').default(false),
+  publishedAt: timestamp('published_at'),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Categories
+export const categories = pgTable('categories', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 100 }).notNull().unique(),
+  description: text('description'),
+});
+
+// Tags
+export const tags = pgTable('tags', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 50 }).notNull().unique(),
+});
+
+// Post-Tag join
+export const postTags = pgTable(
+  'post_tags',
+  {
+    postId: uuid('post_id')
+      .references(() => posts.id)
+      .notNull(),
+    tagId: integer('tag_id')
+      .references(() => tags.id)
+      .notNull(),
+  },
+  table => ({
+    pk: primaryKey(table.postId, table.tagId),
+  }),
+);
+
+// Comments
+export const comments = pgTable('comments', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  postId: uuid('post_id')
+    .references(() => posts.id)
+    .notNull(),
+  authorId: uuid('author_id')
+    .references(() => users.id)
+    .notNull(),
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// Likes/Reactions
+export const likes = pgTable('likes', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  postId: uuid('post_id')
+    .references(() => posts.id)
+    .notNull(),
+  userId: uuid('user_id')
+    .references(() => users.id)
+    .notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// Media (images/videos)
+export const media = pgTable('media', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  postId: uuid('post_id')
+    .references(() => posts.id)
+    .notNull(),
+  url: varchar('url', { length: 255 }).notNull(),
+  type: varchar('type', { length: 50 }).notNull(), // e.g., "image", "video"
+  altText: varchar('alt_text', { length: 255 }),
+});
