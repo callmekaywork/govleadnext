@@ -95,3 +95,32 @@ export const individualSchema = z.object({
   occupation: z.string().max(100).optional(),
   skills: z.array(z.string()).optional(),
 });
+
+export const postSchema = z.object({
+  id: z.string().optional().default(''),
+  authorId: z.string(),
+  title: z.string().min(1).max(200),
+  slug: z
+    .string()
+    .min(1)
+    .max(200)
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
+      message: 'Slug must be URL-friendly (lowercase, hyphens)',
+    }),
+  content: z.string().min(1),
+  excerpt: z.string().optional(),
+  coverImageUrl: z.string().optional(),
+  published: z.boolean().default(false),
+  publishedAt: z.preprocess(val => {
+    if (!val) return undefined;
+    const d = new Date(val as string);
+    return isNaN(d.getTime()) ? undefined : d;
+  }, z.date().optional()),
+  endDate: z.preprocess(val => {
+    if (!val) return undefined;
+    const d = new Date(val as string);
+    return isNaN(d.getTime()) ? undefined : d;
+  }, z.date().optional()),
+
+  updatedAt: z.date().optional(),
+});

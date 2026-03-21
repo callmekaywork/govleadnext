@@ -5,6 +5,7 @@ import {
   corporate,
   individual,
   person,
+  posts,
   startup,
   users,
 } from '@/db/schema';
@@ -20,6 +21,7 @@ import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
 import {
   personSchema,
+  postSchema,
   StartupFormSchema,
   startupSchema,
 } from '@/db/validationschemas';
@@ -278,6 +280,112 @@ export const getActiveApplications = os.handler(async () => {
   return data;
 });
 
+export const getAllPosts = os.handler(async () => {
+  const data = await db
+    .select()
+    .from(posts)
+    .innerJoin(users, eq(posts.authorId, users.id));
+
+  // console.log(data);
+
+  return data;
+});
+
+export const createNewPost = os
+  .$context<{ headers: IncomingHttpHeaders }>()
+  .input(postSchema)
+  .handler(async ({ input, context }) => {
+    // insert data to the database
+
+    console.log(input);
+    // check for the slug if it exists
+    const checkPost = await db
+      .select()
+      .from(posts)
+      .where(eq(posts.slug, input.slug));
+
+    if (checkPost.length == 0) {
+      // create a new post
+      // if there are no slugs that match
+      try {
+        await db.insert(posts).values({
+          title: input.title,
+          authorId: input.authorId,
+          slug: input.slug,
+          content: input.content,
+          published: input.published,
+          excerpt: input.excerpt,
+          coverImageUrl: input.coverImageUrl,
+          publishedAt: input.publishedAt,
+          updatedAt: input.updatedAt,
+        });
+
+        return { message: 'Post created' };
+      } catch (error: any) {
+        console.error('Database insert failed:', error);
+
+        // You can return a structured error response
+        return {
+          message: 'Failed to create post',
+          error: error.message ?? 'Unknown error',
+          code: error.code, // Postgres error code if available
+        };
+      }
+    } else {
+      // what if slug exist
+      // const randomNum = Math.floor(1000 + Math.random() * 9000); // 1000–9999
+
+      try {
+        await db
+          .update(posts)
+          .set({
+            title: input.title,
+            authorId: input.authorId,
+            slug: `${input.slug}`,
+            content: input.content,
+            published: input.published,
+            excerpt: input.excerpt,
+            coverImageUrl: input.coverImageUrl,
+            publishedAt: input.publishedAt,
+            updatedAt: input.updatedAt,
+          })
+          .where(eq(posts.slug, input.slug));
+
+        return { message: `Post with slug: ${input.slug} has been updated` };
+      } catch (error: any) {
+        console.error('Database Update failed:', error);
+
+        // You can return a structured error response
+        return {
+          message: 'Failed to update post',
+          error: error.message ?? 'Unknown error',
+          code: error.code, // Postgres error code if available
+        };
+      }
+    }
+  });
+
+export const deletePost = os
+  .$context<{ headers: IncomingHttpHeaders }>()
+  .input(z.object({ slug: z.string() }))
+  .handler(async ({ input, context }) => {
+    // insert data to the database
+
+    try {
+      await db.delete(posts).where(eq(posts.slug, input.slug));
+      return { message: 'Post Deleted' };
+    } catch (error: any) {
+      console.error('Database delete failed:', error);
+
+      // You can return a structured error response
+      return {
+        message: 'Failed to delete post',
+        error: error.message ?? 'Unknown error',
+        code: error.code, // Postgres error code if available
+      };
+    }
+  });
+
 // export const startupapplication = os
 //   .$context<{ headers: IncomingHttpHeaders }>()
 //   .input(
@@ -298,6 +406,8 @@ export const getActiveApplications = os.handler(async () => {
 export const router = {
   admin: {
     auth: loginOutput,
+    create: createNewPost,
+    delete: deletePost,
     signout: os
       .input(z.object({ id: z.string() }))
       .handler(async ({ input }) => {
@@ -310,6 +420,7 @@ export const router = {
     startup: startupapplication,
   },
   select: {
+    posts: getAllPosts,
     response: getActiveApplications,
   },
 

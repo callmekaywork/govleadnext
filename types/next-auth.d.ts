@@ -105,3 +105,29 @@ type userTaskType = {
   endsAt: Date | null;
   status: string;
 };
+
+type UsersType = {
+  id: string;
+  firstname: string | null;
+  lastname: string | null;
+  email: string;
+  password: string;
+  role: 'user' | 'admin' | 'staff';
+  image: string | null;
+  emailVerified: Date | null;
+  createdAt: Date | null;
+  updatedAt: Date | null;
+};
+
+type PostsType = {
+  id: string;
+  authorId: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string | null;
+  coverImageUrl: string | null;
+  published: boolean | null;
+  publishedAt: Date | null;
+  updatedAt: Date;
+};

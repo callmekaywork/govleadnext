@@ -205,7 +205,7 @@ export const individual = pgTable('individual', {
 // Blog posts
 export const posts = pgTable('posts', {
   id: uuid('id').defaultRandom().primaryKey(),
-  authorId: uuid('author_id')
+  authorId: text('author_id')
     .references(() => users.id)
     .notNull(),
   title: varchar('title', { length: 200 }).notNull(),
@@ -213,8 +213,9 @@ export const posts = pgTable('posts', {
   content: text('content').notNull(),
   excerpt: text('excerpt'),
   coverImageUrl: varchar('cover_image_url', { length: 255 }),
-  published: boolean('published').default(false),
+  published: boolean('published').notNull().default(false),
   publishedAt: timestamp('published_at'),
+  endDate: timestamp('endDate'),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
