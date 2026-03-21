@@ -48,14 +48,6 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// --- Mock Data ---
-const MOCK_USER = {
-  name: 'Alex Rivera',
-  email: 'alex.rivera@example.com',
-  role: 'Senior Product Designer',
-  // avatar: 'https://picsum.photos/seed/alex/100/100',
-};
-
 type AppStatus = 'Accepted' | 'Rejected' | 'Pending';
 
 interface Application {
