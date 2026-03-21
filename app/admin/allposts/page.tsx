@@ -212,7 +212,10 @@ export default function Newpost() {
       <nav className="border-b border-zinc-200 bg-white dark:bg-neutral-900 px-6 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/" className="text-zinc-500 hover:text-zinc-900">
+            <Link
+              href="/admin/dashboard"
+              className="text-zinc-500 hover:text-zinc-900"
+            >
               <ChevronLeft className="h-5 w-5" />
             </Link>
             <h1 className="text-xl dark:text-white font-semibold tracking-tight">
