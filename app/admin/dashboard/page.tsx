@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   CheckCircle2,
@@ -138,13 +138,6 @@ type BlogPostT = PostsType & {
 export default function Admindashboard() {
   const { data: session, status } = useSession();
 
-  if (status === 'loading') {
-    <Loading />;
-  }
-
-  if (status === 'unauthenticated') {
-    <LoginPage />;
-  }
   const [posts, setPosts] = useState<BlogPostT[]>([]);
   const [editingPost, setEditingPost] = useState<Partial<PostsType> | null>(
     null,
@@ -186,6 +179,8 @@ export default function Admindashboard() {
   }, []);
 
   const handleSave = async (data: any) => {
+    console.log(data);
+
     const message = await orpc.admin.create({
       authorId: `${session?.user.id}`,
       title: data.title,
@@ -194,9 +189,9 @@ export default function Admindashboard() {
       published: data.published === 'false' ? false : true,
       excerpt: data.excerpt,
       coverImageUrl: '',
-      publishedAt: new Date(data.publishedAt),
-      endDate: new Date(data.endDate),
-      updatedAt: new Date(),
+      publishedAt: data.publishedAt,
+      endDate: data.endDate,
+      updatedAt: data.updatedAt,
     });
 
     if (message.error) {
@@ -304,6 +299,13 @@ export default function Admindashboard() {
     )
     .slice(0, 3);
 
+  if (status === 'loading') {
+    <Loading />;
+  }
+
+  if (status === 'unauthenticated' || session?.user.id == '') {
+    redirect('/admin/login');
+  }
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-neutral-900 font-sans text-zinc-900">
       <nav className="border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-neutral-800 px-6 py-4">

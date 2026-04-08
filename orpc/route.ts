@@ -286,10 +286,30 @@ export const getAllPosts = os.handler(async () => {
     .from(posts)
     .innerJoin(users, eq(posts.authorId, users.id));
 
-  // console.log(data);
+  return data;
+});
+
+export const getLatestPosts = os.handler(async () => {
+  const data = await db
+    .select()
+    .from(posts)
+    .orderBy(desc(posts.publishedAt)) // newest first
+    .limit(3); // only 3 posts
 
   return data;
 });
+
+export const getViewedPost = os
+  .$context<{ headers: IncomingHttpHeaders }>()
+  .input(z.object({ id: z.string() }))
+  .handler(async ({ input }) => {
+    console.log(input.id);
+    const data = await db.select().from(posts).where(eq(posts.id, input.id));
+
+    console.log(data);
+
+    return data;
+  });
 
 export const createNewPost = os
   .$context<{ headers: IncomingHttpHeaders }>()
@@ -422,6 +442,8 @@ export const router = {
   select: {
     posts: getAllPosts,
     response: getActiveApplications,
+    latest_posts: getLatestPosts,
+    get_viewed_post: getViewedPost,
   },
 
   // server/auth.ts

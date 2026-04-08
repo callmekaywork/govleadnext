@@ -129,5 +129,6 @@ type PostsType = {
   coverImageUrl: string | null;
   published: boolean | null;
   publishedAt: Date | null;
+  endDate: Date | null;
   updatedAt: Date;
 };

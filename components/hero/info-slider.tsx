@@ -121,7 +121,7 @@ export default function InformationSlider() {
     <div
       className={`${isDarkMode ? 'dark' : ''} transition-colors duration-500 dark:bg-neutral-900`}
     >
-      <div className="relative min-h-screen   flex items-center justify-center p-6 text-slate-900 dark:text-slate-100">
+      <div className="relative h-auto   flex items-center justify-center text-slate-900 dark:text-slate-100">
         {/* Main Card Container */}
         <div className=" w-full  lg:max-w-360 bg-white dark:bg-neutral-900 rounded-3xl  overflow-hidden ">
           {/* Header & Theme Toggle */}

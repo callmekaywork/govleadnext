@@ -73,6 +73,10 @@ export default function PostForm({
   const onSubmit = async (data: FormData) => {
     // console.log(data);
 
+    data.updatedAt = new Date();
+    data.publishedAt = new Date(data.publishedAt!);
+    data.endDate = new Date(data.endDate!);
+
     await onSave(data);
     onCancel();
     if (!initialData?.id) {
@@ -227,41 +231,40 @@ export default function PostForm({
     </form>
   );
 }
-function zodResolver(
-  postSchema: z.ZodObject<
-    {
-      title: z.ZodString;
-      slug: z.ZodString;
-      status: z.ZodEnum<{ draft: 'draft'; published: 'published' }>;
-      publishAt: z.ZodString;
-      removeAt: z.ZodOptional<z.ZodString>;
-      excerpt: z.ZodOptional<z.ZodString>;
-      content: z.ZodString;
-    },
-    z.core.$strip
-  >,
-):
-  | import('react-hook-form').Resolver<
-      {
-        title: string;
-        slug: string;
-        status: 'draft' | 'published';
-        publishAt: string;
-        content: string;
-        removeAt?: string | undefined;
-        excerpt?: string | undefined;
-      },
-      any,
-      {
-        title: string;
-        slug: string;
-        status: 'draft' | 'published';
-        publishAt: string;
-        content: string;
-        removeAt?: string | undefined;
-        excerpt?: string | undefined;
-      }
-    >
-  | undefined {
-  throw new Error('Function not implemented.');
-}
+// function zodResolver(
+//   postSchema: z.ZodObject<
+//     {
+//       title: z.ZodString;
+//       slug: z.ZodString;
+//       status: z.ZodEnum<{ draft: 'draft'; published: 'published' }>;
+//       removeAt: z.ZodOptional<z.ZodString>;
+//       excerpt: z.ZodOptional<z.ZodString>;
+//       content: z.ZodString;
+//     },
+//     z.core.$strip
+//   >,
+// ):
+//   | import('react-hook-form').Resolver<
+//       {
+//         title: string;
+//         slug: string;
+//         status: 'draft' | 'published';
+//         publishedAt: string;
+//         content: string;
+//         endDate?: string | undefined;
+//         excerpt?: string | undefined;
+//       },
+//       any,
+//       {
+//         title: string;
+//         slug: string;
+//         status: 'draft' | 'published';
+//         publishedAt: string;
+//         content: string;
+//         removeAt?: string | undefined;
+//         excerpt?: string | undefined;
+//       }
+//     >
+//   | undefined {
+//   throw new Error('Function not implemented.');
+// }
