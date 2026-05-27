@@ -93,7 +93,7 @@ function HeroModern() {
       </motion.div>
 
       {/* Floating Abstract Blocks */}
-      <motion.div
+      {/* <motion.div
         style={{ x: springX, y: springY }}
         className="hidden md:block absolute top-20 right-[10%] w-64 h-64 rounded-[4rem] overflow-hidden rotate-12 shadow-2xl z-0 opacity-80 md:opacity-100"
       >
@@ -103,8 +103,8 @@ function HeroModern() {
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-      </motion.div>
-
+      </motion.div> */}
+      {/* 
       <motion.div
         style={{
           x: useTransform(springX, v => v * -1.5),
@@ -118,7 +118,7 @@ function HeroModern() {
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-      </motion.div>
+      </motion.div> */}
       {/* <motion.div
         style={{
           x: useTransform(springX, v => v * 0.8),
