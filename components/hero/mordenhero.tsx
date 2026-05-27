@@ -17,35 +17,35 @@ import Link from 'next/link';
 //   ref: React.Ref<HTMLDivElement>,
 // ) {
 function HeroModern() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // const containerRef = useRef<HTMLDivElement>(null);
+  // const mouseX = useMotionValue(0);
+  // const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  // const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  // const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      mouseX.set((clientX / innerWidth - 0.5) * 100);
-      mouseY.set((clientY / innerHeight - 0.5) * 100);
-    };
+  // useEffect(() => {
+  //   const handleMouseMove = (e: MouseEvent) => {
+  //     const { clientX, clientY } = e;
+  //     const { innerWidth, innerHeight } = window;
+  //     mouseX.set((clientX / innerWidth - 0.5) * 100);
+  //     mouseY.set((clientY / innerHeight - 0.5) * 100);
+  //   };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  //   window.addEventListener('mousemove', handleMouseMove);
+  //   return () => window.removeEventListener('mousemove', handleMouseMove);
+  // }, [mouseX, mouseY]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ['start end', 'end start'],
+  // });
 
-  const textY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  // const textY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <div
-      ref={containerRef}
+      // ref={containerRef}
       className="relative min-h-screen  bg-white dark:bg-neutral-900  overflow-hidden flex flex-col items-center justify-center p-6 text-center font-sans"
     >
       <div className="md:hidden h-20 w-full" />
@@ -56,7 +56,7 @@ function HeroModern() {
         className="max-w-5xl z-10 "
       >
         <h1
-          data-cursor="contrast"
+          // data-cursor="contrast"
           className="text-5xl md:text-8xl font-bold tracking-tight text-neutral-900 dark:text-neutral-200 mb-8 leading-[1.05]  md:bg-transparent p-5 rounded-2xl"
         >
           Where Ideas Become <br />
@@ -136,7 +136,7 @@ function HeroModern() {
       </motion.div> */}
 
       {/* Decorative lines */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 ">
         <div className="absolute top-0 left-1/4 w-px h-full bg-neutral-200/5" />
         <div className="absolute top-0 left-2/4 w-px h-full bg-neutral-200/5" />
         <div className="absolute top-0 left-3/4 w-px h-full bg-neutral-200/5" />
