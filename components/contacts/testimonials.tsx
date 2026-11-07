@@ -58,7 +58,7 @@ const TestimonialsList = () => {
       content:
         'Incuvera transformed how we handle customer feedback. Our conversion rate jumped by 15% in the first month of using their testimonial widgets.',
       rating: 5,
-      image: '/img_2.jpeg',
+      image: '/default.jpg',
     },
     {
       name: 'Themba Sipho Ncunu',
@@ -66,7 +66,7 @@ const TestimonialsList = () => {
       content:
         'The interface is so clean and the integration was seamless. It&apos;s rare to find a tool that is both powerful and beautiful to look at.',
       rating: 5,
-      image: '/img_3.jpeg',
+      image: '/default.jpg',
     },
     {
       name: 'Lebohang Maroba',
@@ -74,7 +74,7 @@ const TestimonialsList = () => {
       content:
         'Authenticity is key for us. Incuvera makes it easy to connect with our clients with their great service.',
       rating: 4,
-      image: '/img_1.jpeg',
+      image: '/default.jpg',
     },
   ];
 
